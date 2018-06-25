@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Tour Guide</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pagoda">pagoda</string>
+    <string name="testAbout">\u0020\u0020\u0020\u0020JavaScript can be Haha built on a plethora of development environments like Visual Studio,
+Sublime Text 2, WebStorm/PHPStorm, Eclipse, Brackets, etc. The Visual Studio Code and
+Brackets IDE is discussed in this section. The development environment used here is Visual
+        Studio Code (Windows platform).Upon installation, you will find an icon of shell on the right hand side of the editor .
+Once you click on the icon, you will see the shell window as shown in the following
+screenshot.</string>
+
+    <string name="api">AIzaSyCSQKKcek4oycRpXkgEAA1ZY4GWn-e0Feg</string>
+    <string name="title_activity_maps">Map</string>
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="2dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/ripple"
+    android:id="@+id/pagodaone_cardview"
+    app:cardElevation="5dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_margin="4dp"
+            android:scaleType="centerCrop"
+            android:transitionName="pagoda"
+            android:id="@+id/pagodaone_imageview"
+            android:fitsSystemWindows="true"
+            android:layout_height="230dp"
+            tools:targetApi="lollipop" />
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/pagodaone_textview"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginBottom="8dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:text="Su Taung Pyae Pagoda"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

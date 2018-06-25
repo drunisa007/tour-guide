@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "388611318526",
+    "firebase_url": "https://flashtourmyanmar.firebaseio.com",
+    "project_id": "flashtourmyanmar",
+    "storage_bucket": "flashtourmyanmar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388611318526:android:2a45f4580a2079d3",
+        "android_client_info": {
+          "package_name": "tourguide.lightidea.com.tourguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388611318526-ssp2j70rhk9q8uicmk9b0qpv9rmvdpa8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tourguide.lightidea.com.tourguide",
+            "certificate_hash": "f3b0ee95d5df92ee540829cd682ae7d99a4d62fb"
+          }
+        },
+        {
+          "client_id": "388611318526-8igmagb09amr65ofisrgmuf4jv77plqb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA96oOey6bP_nV2WY-aTEKI6EzDfycgSoI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388611318526-8igmagb09amr65ofisrgmuf4jv77plqb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

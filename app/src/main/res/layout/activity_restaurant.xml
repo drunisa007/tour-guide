@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+
+    tools:context=".activity.RestaurantActivity">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:id="@+id/restaurant_toolbar"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:titleTextColor="@color/colorWhite"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:background="@color/colorPrimary"
+        android:layout_height="?android:attr/actionBarSize"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/guide"
+        android:layout_height="200dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:id="@+id/traditional_food_cardview"
+                android:background="@drawable/ripple"
+                android:foreground="@drawable/ripple"
+                app:cardElevation="5dp"
+                app:cardBackgroundColor="@color/one"
+                android:layout_height="160dp"
+                android:focusable="true">
+             <TextView
+                 android:layout_width="match_parent"
+                 android:text="Traditional Food"
+                 android:textAlignment="center"
+                 android:layout_gravity="center"
+                 android:textSize="28sp"
+                 android:textColor="@color/colorWhite"
+                 android:layout_height="wrap_content" />
+            </android.support.v7.widget.CardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/asian_food_cardview"
+                    android:clickable="true"
+                    android:background="@drawable/ripple"
+                    android:foreground="@drawable/ripple"
+                    android:layout_margin="5dp"
+
+                    app:cardBackgroundColor="@color/eight"
+                    android:layout_height="160dp"
+                    android:focusable="true">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:text="Asian Food"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:textSize="28sp"
+                        android:textColor="@color/colorWhite"
+                        android:layout_height="wrap_content" />
+
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:background="@drawable/ripple"
+                    android:foreground="@drawable/ripple"
+                    android:id="@+id/european_food_cardview"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="@color/five"
+                    android:layout_height="160dp"
+                    android:focusable="true">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:text="European Food"
+                        android:textAlignment="center"
+                        android:layout_gravity="center"
+                        android:textSize="28sp"
+                        android:textColor="@color/colorWhite"
+                        android:layout_height="wrap_content" />
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

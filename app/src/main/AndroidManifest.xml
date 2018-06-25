@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="tourguide.lightidea.com.tourguide">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".activity.Fireapp"
+        android:allowBackup="true"
+        android:appCategory="news"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:windowSoftInputMode="stateHidden|stateUnchanged"
+        tools:targetApi="o">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCSQKKcek4oycRpXkgEAA1ZY4GWn-e0Feg" />
+
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.PlaceActiviy"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+        <activity android:name=".activity.pagodaOneSingleActivity" />
+        <activity
+            android:name=".activity.FestivalActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+        <activity android:name=".activity.PlaceRecyclerActivity" />
+        <activity
+            android:name=".activity.PlaceSingleActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+        <activity
+            android:name=".activity.HotelActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+        <activity android:name=".activity.HotelSingleActivity" />
+        <activity
+            android:name=".activity.RestaurantActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar"></activity>
+        <activity android:name=".activity.RestaurantSingleActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar"
+            ></activity>
+    </application>
+
+</manifest>
