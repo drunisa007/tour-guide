@@ -82,6 +82,8 @@ public class HotelActivity extends AppCompatActivity {
         MenuItem item = menu.findItem(R.id.hotel_menuId);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        ///reqweerter
+        Toast.makeText(this,"hello,",Toast.LENGTH_LONG).show();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
