@@ -8,13 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import tourguide.lightidea.com.tourguide.R;
-import tourguide.lightidea.com.tourguide.activity.PlaceSingleActivity;
+import tourguide.lightidea.com.tourguide.activity.PlaceActivityPg.PlaceSingleActivity;
 
 class MyTestTraditionalAdapter extends RecyclerView.Adapter<MyTestTraditionalAdapter.MyViewHolder> {
     private   List<String> mListDay =new ArrayList<>();

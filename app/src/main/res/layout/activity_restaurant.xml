@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
 
-    tools:context=".activity.RestaurantActivity">
+    tools:context=".activity.RestaurantActivityPg.RestaurantActivity">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:id="@+id/restaurant_toolbar"

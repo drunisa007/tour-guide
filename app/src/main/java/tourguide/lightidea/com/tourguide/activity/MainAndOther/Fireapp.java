@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity;
+package tourguide.lightidea.com.tourguide.activity.MainAndOther;
 
 import android.app.Application;
 

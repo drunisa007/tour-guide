@@ -4,6 +4,7 @@
     android:layout_height="200dp"
     app:cardElevation="5dp"
     android:clickable="true"
+    android:id="@+id/traditional_single_food_cardview"
     android:layout_margin="7dp"
     android:foreground="@drawable/ripple"
     xmlns:app="http://schemas.android.com/apk/res-auto"

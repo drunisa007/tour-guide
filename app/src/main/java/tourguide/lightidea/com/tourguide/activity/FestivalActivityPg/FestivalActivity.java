@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity;
+package tourguide.lightidea.com.tourguide.activity.FestivalActivityPg;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;

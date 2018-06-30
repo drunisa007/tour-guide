@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity;
+package tourguide.lightidea.com.tourguide.activity.PlaceActivityPg;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity;
+package tourguide.lightidea.com.tourguide.activity.MainAndOther;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -11,7 +11,6 @@ import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ActivityCompat;
@@ -39,18 +38,14 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.google.android.gms.location.SettingsClient;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import tourguide.lightidea.com.tourguide.R;
+import tourguide.lightidea.com.tourguide.activity.RestaurantActivityPg.RestaurantSingleActivity;
 import tourguide.lightidea.com.tourguide.adapter.DialogAdapter.DialogAdapter;
 import tourguide.lightidea.com.tourguide.adapter.recyclerAdapter.MainRecyclerAdapter;
 import tourguide.lightidea.com.tourguide.model.MainList;
@@ -243,7 +238,10 @@ public class MainActivity extends AppCompatActivity {
         list.add("Sagaing");
         list.add("Myint Kyi Nar");
         list.add("Mu Sae");
-        dialog_recyclerview.setAdapter(new DialogAdapter(list,this));
+        List mList = new ArrayList();
+        mList.add(RestaurantSingleActivity.class);
+        mList.add(MainActivity.class);
+        dialog_recyclerview.setAdapter(new DialogAdapter(list,MainActivity.this,1,mList,"haha","haha"));
         mDialog.show();
 
     }

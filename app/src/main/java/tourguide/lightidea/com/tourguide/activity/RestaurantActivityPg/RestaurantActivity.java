@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity;
+package tourguide.lightidea.com.tourguide.activity.RestaurantActivityPg;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -42,9 +42,11 @@ public class RestaurantActivity extends AppCompatActivity {
                 Intent intent = new Intent(view.getContext(),RestaurantSingleActivity.class);
                 intent.putExtra("data","traditionalfood");
                 intent.putExtra("title","Traditional Food");
+                intent.putExtra("all","all");
                 startActivity(intent);
             }
         });
+
 
         asianFood.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,8 +11,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import tourguide.lightidea.com.tourguide.activity.PlaceActiviy;
-
 /**
  * Created by Arun on 5/12/2018.
  */

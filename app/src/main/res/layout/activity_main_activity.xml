@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#f5f9f9"
-    tools:context="tourguide.lightidea.com.tourguide.activity.MainActivity">
+    tools:context="tourguide.lightidea.com.tourguide.activity.MainAndOther.MainActivity">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:id="@+id/main_activity_appbar"

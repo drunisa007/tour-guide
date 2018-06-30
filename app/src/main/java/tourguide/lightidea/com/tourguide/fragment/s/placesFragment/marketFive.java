@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,8 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import tourguide.lightidea.com.tourguide.R;
-import tourguide.lightidea.com.tourguide.activity.PlaceSingleActivity;
-import tourguide.lightidea.com.tourguide.activity.pagodaOneSingleActivity;
+import tourguide.lightidea.com.tourguide.activity.PlaceActivityPg.PlaceSingleActivity;
 import tourguide.lightidea.com.tourguide.model.placesfragmetModel.MarketModel;
 
 public class marketFive extends Fragment {

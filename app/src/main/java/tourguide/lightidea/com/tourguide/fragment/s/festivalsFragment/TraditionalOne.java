@@ -1,24 +1,18 @@
 package tourguide.lightidea.com.tourguide.fragment.s.festivalsFragment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,8 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tourguide.lightidea.com.tourguide.R;
-import tourguide.lightidea.com.tourguide.activity.PlaceSingleActivity;
-import tourguide.lightidea.com.tourguide.model.festivalfragmentModel.TraditionExtraModel;
 import tourguide.lightidea.com.tourguide.model.festivalfragmentModel.TraditionalOneModel;
 
 

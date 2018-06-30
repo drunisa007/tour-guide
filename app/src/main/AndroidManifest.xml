@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".activity.Fireapp"
+        android:name=".activity.MainAndOther.Fireapp"
         android:allowBackup="true"
         android:appCategory="news"
         android:icon="@mipmap/ic_launcher"
@@ -26,7 +26,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCSQKKcek4oycRpXkgEAA1ZY4GWn-e0Feg" />
 
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".activity.MainAndOther.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,26 +34,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.PlaceActiviy"
+            android:name=".activity.PlaceActivityPg.PlaceActiviy"
             android:theme="@style/AppTheme.NoActionBar_StatusBar" />
-        <activity android:name=".activity.pagodaOneSingleActivity" />
+        <activity android:name=".activity.MainAndOther.pagodaOneSingleActivity" />
         <activity
-            android:name=".activity.FestivalActivity"
+            android:name=".activity.FestivalActivityPg.FestivalActivity"
             android:theme="@style/AppTheme.NoActionBar_StatusBar" />
-        <activity android:name=".activity.PlaceRecyclerActivity" />
+        <activity android:name=".activity.PlaceActivityPg.PlaceRecyclerActivity" />
         <activity
-            android:name=".activity.PlaceSingleActivity"
+            android:name=".activity.PlaceActivityPg.PlaceSingleActivity"
             android:theme="@style/AppTheme.NoActionBar_StatusBar" />
         <activity
-            android:name=".activity.HotelActivity"
+            android:name=".activity.HotelActivityPg.HotelActivity"
             android:theme="@style/AppTheme.NoActionBar_StatusBar" />
-        <activity android:name=".activity.HotelSingleActivity" />
+        <activity android:name=".activity.HotelActivityPg.HotelSingleActivity" />
         <activity
-            android:name=".activity.RestaurantActivity"
-            android:theme="@style/AppTheme.NoActionBar_StatusBar"></activity>
-        <activity android:name=".activity.RestaurantSingleActivity"
-            android:theme="@style/AppTheme.NoActionBar_StatusBar"
-            ></activity>
+            android:name=".activity.RestaurantActivityPg.RestaurantActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+        <activity
+            android:name=".activity.RestaurantActivityPg.RestaurantSingleActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar" />
+        <activity android:name=".activity.RestaurantActivityPg.FoodSingleActiivity"></activity>
     </application>
 
 </manifest>

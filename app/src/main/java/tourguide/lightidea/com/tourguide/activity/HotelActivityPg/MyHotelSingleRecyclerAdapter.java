@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity;
+package tourguide.lightidea.com.tourguide.activity.HotelActivityPg;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tourguide.lightidea.com.tourguide.R;
-import tourguide.lightidea.com.tourguide.model.HotelModel.FacModel;
 
 public  class MyHotelSingleRecyclerAdapter extends RecyclerView.Adapter<MyHotelSingleRecyclerAdapter.MyViewHolder> {
 

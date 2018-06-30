@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity;
+package tourguide.lightidea.com.tourguide.activity.PlaceActivityPg;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
