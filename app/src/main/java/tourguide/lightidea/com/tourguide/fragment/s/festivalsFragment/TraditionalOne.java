@@ -36,6 +36,7 @@ public class TraditionalOne extends Fragment {
           private   List<String> mListDay =new ArrayList<>();
           private   List<String> mListName =new ArrayList<>();
            private List<String> mListData =new ArrayList<>();
+           private String body,image;
 
     private FirestoreRecyclerAdapter<TraditionalOneModel,TraditionalOneViewHolder> adapter;
     private int colors[]={R.color.one,R.color.two,R.color.three,R.color.four,R.color.five,R.color.six,R.color.seven,
@@ -174,6 +175,8 @@ public class TraditionalOne extends Fragment {
             for(String resultData:data.split(",")){
                 mListData.add(resultData);
             }
+            body = model.getBody();
+            image = model.getImage();
         }
 
 
@@ -183,7 +186,7 @@ public class TraditionalOne extends Fragment {
     }
 
     private void workingForExtradRecyclerView(RecyclerView mExtraRecyclerView) {
-        mExtraRecyclerView.setAdapter(new MyTestTraditionalAdapter(mListDay,mListName,mListData));
+        mExtraRecyclerView.setAdapter(new MyTestTraditionalAdapter(mListDay,mListName,mListData,body,image));
     }
 
 

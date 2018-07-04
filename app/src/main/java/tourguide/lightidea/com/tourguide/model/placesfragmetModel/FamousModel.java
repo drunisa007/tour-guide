@@ -10,7 +10,23 @@ public class FamousModel {
     private String url;
     private String data;
     private String famous;
+    private String lag,log;
 
+    public String getLag() {
+        return lag;
+    }
+
+    public void setLag(String lag) {
+        this.lag = lag;
+    }
+
+    public String getLog() {
+        return log;
+    }
+
+    public void setLog(String log) {
+        this.log = log;
+    }
 
     public String getFamous() {
         return famous;
@@ -22,11 +38,13 @@ public class FamousModel {
 
 
 
-    public FamousModel(String name, String url, String data,String famous) {
+    public FamousModel(String name, String url, String data,String famous,String lag,String log) {
         this.name = name;
         this.url = url;
         this.data = data;
         this.famous=famous;
+        this.lag =lag;
+        this.log = log;
     }
 
     public String getData() {

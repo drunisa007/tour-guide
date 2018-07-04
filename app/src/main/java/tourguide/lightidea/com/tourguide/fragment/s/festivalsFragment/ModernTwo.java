@@ -22,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import tourguide.lightidea.com.tourguide.R;
-import tourguide.lightidea.com.tourguide.activity.PlaceActivityPg.PlaceSingleActivity;
+import tourguide.lightidea.com.tourguide.activity.Place.PlaceSingleActivity;
 import tourguide.lightidea.com.tourguide.model.festivalfragmentModel.ModernTwoModel;
 
 
@@ -57,7 +57,10 @@ public class ModernTwo extends Fragment {
         adapter =new FirestoreRecyclerAdapter<ModernTwoModel, ModernTwoViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ModernTwoViewHolder holder, int position, @NonNull final ModernTwoModel model) {
-                holder.mTextView.setText(model.getName());
+                holder.mTextViewLocation.setText(model.getLocation());
+                holder.mTextViewTime.setText(model.getTime());
+                holder.mTextViewMonth.setText(model.getMonth());
+                holder.mTextViewDate.setText(model.getDate());
                 Glide.with(getActivity()).load(model.getUrl()).into(holder.mImageView);
 
 
@@ -69,6 +72,8 @@ public class ModernTwo extends Fragment {
                         intent.putExtra("data",model.getData());
                         intent.putExtra("position","modern_about");
                         intent.putExtra("pos","1");
+                        intent.putExtra("lag",model.getLag());
+                        intent.putExtra("log",model.getLog());
                         getActivity().startActivity(intent);
                     }
                 });
@@ -93,13 +98,16 @@ public class ModernTwo extends Fragment {
 
     private class ModernTwoViewHolder extends RecyclerView.ViewHolder {
         CardView mCardView;
-        TextView mTextView;
+        TextView mTextViewLocation,mTextViewDate,mTextViewMonth,mTextViewTime;
         ImageView mImageView;
 
         public ModernTwoViewHolder(View itemView) {
             super(itemView);
             mCardView = itemView.findViewById(R.id.modern_two_cardview);
-            mTextView = itemView.findViewById(R.id.modern_two_textview);
+            mTextViewLocation = itemView.findViewById(R.id.modern_two_textview_location);
+            mTextViewDate = itemView.findViewById(R.id.modern_two_textview_date);
+            mTextViewMonth  =itemView.findViewById(R.id.modern_two_textview_month);
+            mTextViewTime = itemView.findViewById(R.id.modern_two_textview_time);
             mImageView = itemView.findViewById(R.id.modern_two_imageview);
         }
     }

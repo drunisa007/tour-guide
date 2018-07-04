@@ -1,24 +1,21 @@
 package tourguide.lightidea.com.tourguide.adapter.DialogAdapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import tourguide.lightidea.com.tourguide.R;
 import tourguide.lightidea.com.tourguide.activity.MainAndOther.MainActivity;
-import tourguide.lightidea.com.tourguide.activity.RestaurantActivityPg.RestaurantSingleActivity;
+import tourguide.lightidea.com.tourguide.activity.Restaurant.RestaurantSingleActivity;
 
 /**
  * Created by USER on 5/19/2018.

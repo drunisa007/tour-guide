@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity.HotelActivityPg;
+package tourguide.lightidea.com.tourguide.activity.Hotel;
 
 import android.graphics.Color;
 import android.os.Build;

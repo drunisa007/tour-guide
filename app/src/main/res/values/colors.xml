@@ -18,4 +18,6 @@
     <color name="ten">#9c27b0</color>
     <color name="eleven">#607d8b</color>
     <color name="twelve">#e91fb9ff</color>
+    <color name="colorBlack">#000000</color>
+
 </resources>

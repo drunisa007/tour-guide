@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity.RestaurantActivityPg;
+package tourguide.lightidea.com.tourguide.activity.Restaurant;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -54,6 +54,7 @@ public class RestaurantActivity extends AppCompatActivity {
                 Intent intent = new Intent(view.getContext(),RestaurantSingleActivity.class);
                 intent.putExtra("data","asianfood");
                 intent.putExtra("title","Asian  Food");
+                intent.putExtra("all","all");
                 startActivity(intent);
             }
         });
@@ -64,6 +65,7 @@ public class RestaurantActivity extends AppCompatActivity {
                 Intent intent = new Intent(view.getContext(),RestaurantSingleActivity.class);
                 intent.putExtra("data","europeanfood");
                 intent.putExtra("title","European Food");
+                intent.putExtra("all","all");
                 startActivity(intent);
             }
         });

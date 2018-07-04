@@ -6,11 +6,14 @@ package tourguide.lightidea.com.tourguide.model.placesfragmetModel;
 
 public class PagodaModel {
 
-    public PagodaModel(String data, String url, String name) {
+    public PagodaModel(String data, String url, String name,String lag,String log) {
         this.data = data;
         this.url = url;
         this.name = name;
+        this.lag  = lag;
+        this.log = log;
     }
+
 
     public String getData() {
         return data;
@@ -23,6 +26,24 @@ public class PagodaModel {
     private String data;
     private String url;
     private String name;
+    private String lag,log;
+
+    public String getLag() {
+        return lag;
+    }
+
+    public void setLag(String lag) {
+        this.lag = lag;
+    }
+
+    public String getLog() {
+        return log;
+    }
+
+    public void setLog(String log) {
+        this.log = log;
+    }
+
     public String getName() {
         return name;
     }

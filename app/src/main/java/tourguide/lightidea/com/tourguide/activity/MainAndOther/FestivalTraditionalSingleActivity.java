@@ -12,30 +12,32 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import tourguide.lightidea.com.tourguide.R;
 
-public class pagodaOneSingleActivity extends AppCompatActivity {
-
+public class FestivalTraditionalSingleActivity extends AppCompatActivity {
     private ImageView mImageView;
+    private TextView mTextView;
     private Toolbar mToolbar;
 
-    private String pagodaName,pagodaUrl;
+    private String pagodaName, pagodaUrl, pagodaText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pagoda_one_single);
-           pagodaName = getIntent().getStringExtra("name");
-           pagodaUrl = getIntent().getStringExtra("url");
-        Toast.makeText(this, pagodaName, Toast.LENGTH_SHORT).show();
+        setContentView(R.layout.activity_festival_traditional_single);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
+
+        pagodaName =getIntent().getStringExtra("name");
+        pagodaUrl = getIntent().getStringExtra("image");
+        pagodaText = getIntent().getStringExtra("body");
 
         givingId();
 
@@ -46,9 +48,11 @@ public class pagodaOneSingleActivity extends AppCompatActivity {
     }
 
     private void givingId() {
-        mImageView = findViewById(R.id.pagodaone_single_imageview);
+        mImageView = findViewById(R.id.festival_traditional_single_imageview);
+        mTextView = findViewById(R.id.festival_traditional_single_textview);
+        Glide.with(FestivalTraditionalSingleActivity.this).load(pagodaUrl).into(mImageView);
+        mTextView.setText(pagodaText);
 
-        Glide.with(pagodaOneSingleActivity.this).load(pagodaUrl).into(mImageView);
         mToolbar = findViewById(R.id.pagodaone_single_toolbar);
     }
 
@@ -56,6 +60,7 @@ public class pagodaOneSingleActivity extends AppCompatActivity {
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(pagodaName);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +78,7 @@ public class pagodaOneSingleActivity extends AppCompatActivity {
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             }
 
-            CollapsingToolbarLayout collapsing_toolbar_layout = findViewById(R.id.pagodaone_single_collapsing_toolbar);
+            CollapsingToolbarLayout collapsing_toolbar_layout = findViewById(R.id.festival_traditional_single_collapsing_toolbar);
             collapsing_toolbar_layout.setExpandedTitleTextColor(ColorStateList.valueOf(Color.TRANSPARENT));
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -85,9 +90,9 @@ public class pagodaOneSingleActivity extends AppCompatActivity {
 
     private void initCollapsingToolbar() {
         final CollapsingToolbarLayout collapsingToolbar =
-                findViewById(R.id.pagodaone_single_collapsing_toolbar);
+                findViewById(R.id.festival_traditional_single_collapsing_toolbar);
         collapsingToolbar.setTitle(pagodaName);
-        AppBarLayout appBarLayout = findViewById(R.id.pagodaone_single_appbar);
+        AppBarLayout appBarLayout = findViewById(R.id.festival_traditional_single_appbar);
         appBarLayout.setExpanded(true);
 
         // hiding & showing the title when toolbar expanded & collapsed

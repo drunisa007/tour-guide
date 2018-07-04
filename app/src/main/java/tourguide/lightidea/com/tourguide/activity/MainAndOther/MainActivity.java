@@ -45,7 +45,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tourguide.lightidea.com.tourguide.R;
-import tourguide.lightidea.com.tourguide.activity.RestaurantActivityPg.RestaurantSingleActivity;
+import tourguide.lightidea.com.tourguide.activity.Restaurant.RestaurantSingleActivity;
 import tourguide.lightidea.com.tourguide.adapter.DialogAdapter.DialogAdapter;
 import tourguide.lightidea.com.tourguide.adapter.recyclerAdapter.MainRecyclerAdapter;
 import tourguide.lightidea.com.tourguide.model.MainList;

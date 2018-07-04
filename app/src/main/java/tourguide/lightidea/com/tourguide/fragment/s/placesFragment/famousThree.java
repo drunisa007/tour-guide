@@ -22,7 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import tourguide.lightidea.com.tourguide.R;
-import tourguide.lightidea.com.tourguide.activity.PlaceActivityPg.PlaceSingleActivity;
+import tourguide.lightidea.com.tourguide.activity.Place.PlaceSingleActivity;
 import tourguide.lightidea.com.tourguide.model.placesfragmetModel.FamousModel;
 
 /**
@@ -97,7 +97,8 @@ public class famousThree extends Fragment {
                         intent.putExtra("data",model.getData());
                         intent.putExtra("position","famous_about");
                         intent.putExtra("pos","0");
-
+                        intent.putExtra("lag",model.getLag());
+                        intent.putExtra("log",model.getLog());
                         getActivity().startActivity(intent);
                     }
                 });

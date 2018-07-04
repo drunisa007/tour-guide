@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity.RestaurantActivityPg;
+package tourguide.lightidea.com.tourguide.activity.Restaurant;
 
 import android.os.Build;
 import android.support.annotation.NonNull;

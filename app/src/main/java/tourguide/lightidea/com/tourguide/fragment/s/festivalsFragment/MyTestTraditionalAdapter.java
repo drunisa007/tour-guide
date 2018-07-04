@@ -13,16 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tourguide.lightidea.com.tourguide.R;
-import tourguide.lightidea.com.tourguide.activity.PlaceActivityPg.PlaceSingleActivity;
+import tourguide.lightidea.com.tourguide.activity.MainAndOther.FestivalTraditionalSingleActivity;
 
 class MyTestTraditionalAdapter extends RecyclerView.Adapter<MyTestTraditionalAdapter.MyViewHolder> {
     private   List<String> mListDay =new ArrayList<>();
     private   List<String> mListName =new ArrayList<>();
     private List<String> mListData =new ArrayList<>();
-    public MyTestTraditionalAdapter(List<String> mListDay, List<String> mListName, List<String> mListData) {
+    private String body,image;
+    public MyTestTraditionalAdapter(List<String> mListDay, List<String> mListName, List<String> mListData, String body, String image) {
         this.mListDay=mListDay;
         this.mListName=mListName;
         this.mListData = mListData;
+        this.body = body;
+        this.image =image;
     }
 
     @NonNull
@@ -41,11 +44,10 @@ class MyTestTraditionalAdapter extends RecyclerView.Adapter<MyTestTraditionalAda
         holder.onClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), PlaceSingleActivity.class);
+                Intent intent = new Intent(view.getContext(), FestivalTraditionalSingleActivity.class);
                 intent.putExtra("name",holder.name.getText());
-                intent.putExtra("pos","1");
-                intent.putExtra("data",holder.data.getText());
-                intent.putExtra("position","traditional_about");
+                intent.putExtra("body",body);
+                intent.putExtra("image",image);
                 view.getContext().startActivity(intent);
             }
         });

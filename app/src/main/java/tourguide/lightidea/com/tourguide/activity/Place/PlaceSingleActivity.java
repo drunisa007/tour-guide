@@ -1,27 +1,15 @@
-package tourguide.lightidea.com.tourguide.activity.PlaceActivityPg;
+package tourguide.lightidea.com.tourguide.activity.Place;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
-
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.SettingsClient;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +27,7 @@ public class PlaceSingleActivity extends AppCompatActivity {
     private List<String> mListTitle;
     private List<Fragment> mListFragment;
     private String pos;
+    private String lag,log;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +38,8 @@ public class PlaceSingleActivity extends AppCompatActivity {
       data = getIntent().getStringExtra("data");
       pos  = getIntent().getStringExtra("pos");
       position=getIntent().getStringExtra("position");
+      lag = getIntent().getStringExtra("lag");
+      log = getIntent().getStringExtra("log");
 
 
         givingId();
@@ -73,6 +64,8 @@ public class PlaceSingleActivity extends AppCompatActivity {
         bd.putString("data",data);
         bd.putString("position",position);
         bd.putString("pos",pos);
+        bd.putString("lag",lag);
+        bd.putString("log",log);
         one.setArguments(bd);
         LocationTwo two = new LocationTwo();
         two.setArguments(bd);

@@ -17,10 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tourguide.lightidea.com.tourguide.R;
-import tourguide.lightidea.com.tourguide.activity.FestivalActivityPg.FestivalActivity;
-import tourguide.lightidea.com.tourguide.activity.HotelActivityPg.HotelActivity;
-import tourguide.lightidea.com.tourguide.activity.PlaceActivityPg.PlaceActiviy;
-import tourguide.lightidea.com.tourguide.activity.RestaurantActivityPg.RestaurantActivity;
+import tourguide.lightidea.com.tourguide.activity.Festival.FestivalActivity;
+import tourguide.lightidea.com.tourguide.activity.Hotel.HotelActivity;
+import tourguide.lightidea.com.tourguide.activity.Place.PlaceActiviy;
+import tourguide.lightidea.com.tourguide.activity.Restaurant.RestaurantActivity;
 import tourguide.lightidea.com.tourguide.model.MainList;
 
 

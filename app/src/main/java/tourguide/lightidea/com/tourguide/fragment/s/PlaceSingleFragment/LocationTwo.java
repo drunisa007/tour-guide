@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,7 @@ public class LocationTwo extends Fragment {
     private Location mLastKnownLocation;
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
+    private double DoubleLag,DoubleLong;
 
 
     View view;
@@ -62,6 +64,21 @@ public class LocationTwo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_location_two, container, false);
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
+        Bundle bundle = getArguments();
+        if(bundle!=null){
+
+            if(TextUtils.isEmpty(bundle.getString("lag"))){
+                DoubleLag=21.9928775;
+                DoubleLong=96.0943637;
+            }
+            else{
+                DoubleLag = Double.parseDouble(bundle.getString("lag"));
+                DoubleLong=Double.parseDouble(bundle.getString("log"));
+            }
+
+
+        }
 
         initMap();
         return view;
@@ -147,12 +164,12 @@ public class LocationTwo extends Fragment {
                             mMap.getUiSettings().setMyLocationButtonEnabled(true);
                             mMap.getUiSettings().setZoomControlsEnabled(true);
                             mMap.addMarker(new MarkerOptions().position( new LatLng(mLastKnownLocation.getLatitude(), mLastKnownLocation.getLongitude())).title("Start"));
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(21.994645, 96.092791)).title("end"));
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(DoubleLag, DoubleLong)).title("end"));
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mLastKnownLocation.getLatitude(),                                     mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                             mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                             ArrayList<LatLng> points = new ArrayList<LatLng>();
                             points.add(new LatLng(mLastKnownLocation.getLatitude(),mLastKnownLocation.getLongitude()));
-                            points.add(new LatLng(21.994645, 96.092791));
+                            points.add(new LatLng(DoubleLag, DoubleLong));
                             PolylineOptions polyLineOptions = new PolylineOptions();
                             polyLineOptions.width(7 * 1);
                             polyLineOptions.geodesic(true);

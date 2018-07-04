@@ -1,4 +1,4 @@
-package tourguide.lightidea.com.tourguide.activity.RestaurantActivityPg;
+package tourguide.lightidea.com.tourguide.activity.Restaurant;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
@@ -180,8 +179,18 @@ public class RestaurantSingleActivity extends AppCompatActivity {
         dialog_recyclerview.setHasFixedSize(true);
         dialog_recyclerview.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         List<String> list = new ArrayList<>();
-        list.add("Burmese");
-        list.add("Shan");
+        if(data.equals("traditionalfood")){
+            list.add("Burmese");
+            list.add("Shan");
+        }
+        else if(data.equals("asianfood")){
+            list.add("Chinese");
+
+        }
+        else if(data.equals("europeanfood")){
+            list.add("UK");
+        }
+
         List mList = new ArrayList();
         mList.add(RestaurantSingleActivity.class);
         mList.add(MainActivity.class);
