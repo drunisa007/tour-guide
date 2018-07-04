@@ -78,12 +78,13 @@ public class famousThree extends Fragment {
                 holder.mIcon.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(id%2==0){
+                        if(id==0){
                             Glide.with(getActivity()).load(R.drawable.like).into(holder.mIcon);
+                            id=1;
                         }
                         else{
                             Glide.with(getActivity()).load(R.drawable.unlike).into(holder.mIcon);
-
+                            id=0;
                         }
 
                     }
@@ -100,6 +101,8 @@ public class famousThree extends Fragment {
                         getActivity().startActivity(intent);
                     }
                 });
+
+                holder.mAbout.setText(model.getFamous());
             }
 
             @NonNull

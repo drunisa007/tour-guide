@@ -68,6 +68,7 @@ public class resortFour extends Fragment {
             protected void onBindViewHolder(@NonNull ResortHolder holder, int position, @NonNull final ResortModel model) {
                 holder.mTextView.setText(model.getName());
                 Glide.with(getActivity()).load(model.getUrl()).into(holder.mImageView);
+                holder.mRating.setText(model.getRating());
                 holder.mCardview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -81,6 +82,7 @@ public class resortFour extends Fragment {
                     }
                 });
             }
+
 
             @NonNull
             @Override
@@ -102,11 +104,13 @@ public class resortFour extends Fragment {
         ImageView mImageView;
         TextView mTextView;
         CardView mCardview;
+        TextView mRating;
         public ResortHolder(View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.resortfour_imageview);
             mTextView = itemView.findViewById(R.id.resortfour_textview);
             mCardview = itemView.findViewById(R.id.resortfour_cardview);
+            mRating = itemView.findViewById(R.id.resortfour_rating);
         }
     }
 }

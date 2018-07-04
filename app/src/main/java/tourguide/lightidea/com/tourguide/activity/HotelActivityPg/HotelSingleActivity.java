@@ -39,7 +39,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +56,7 @@ public class HotelSingleActivity extends AppCompatActivity {
     private ImageView mImageView;
     private Toolbar mToolbar;
     private String hotelName,hotelUrl,hotelData,position;
-    private String phone,location,price,room,reroom;
+    private String phone,location,price,id;
     private CardView hotel_single_review_button;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -70,6 +72,8 @@ public class HotelSingleActivity extends AppCompatActivity {
     private TextView hotelPhone,hotelLocation,hotelPrice,hotelRoom,hotelReroom;
 
     private RecyclerView hotel_single_review_recyclerview;
+    private int RatingOne,RatingTwo,RatingThree,RatingFour,RatingFive;
+    private MaterialDialog mDialog;
 
  private    FirestoreRecyclerAdapter<HotelSingleReview,MyHotelSingleReviewRecyclerAdapter> adapter;
 
@@ -79,7 +83,6 @@ public class HotelSingleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel_single);
 
-
         hotelName = getIntent().getStringExtra("name");
         hotelUrl = getIntent().getStringExtra("url");
         hotelData= getIntent().getStringExtra("data");
@@ -87,6 +90,8 @@ public class HotelSingleActivity extends AppCompatActivity {
         phone=getIntent().getStringExtra("phone");
         location=getIntent().getStringExtra("location");
         price=getIntent().getStringExtra("price");
+        id = getIntent().getStringExtra("id");
+        Toast.makeText(this, id+"", Toast.LENGTH_SHORT).show();
         //room=getIntent().getStringExtra("room");
         //reroom=getIntent().getStringExtra("reroom");
 
@@ -321,7 +326,7 @@ public class HotelSingleActivity extends AppCompatActivity {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(this)
                 .customView(R.layout.review_layout_for_hotel,false);
 
-        final MaterialDialog mDialog = builder.build();
+          mDialog = builder.build();
         View view= mDialog.getView();
         final RatingBar ratingBar  = view.findViewById(R.id.review_ratingBar);
         final EditText editText  = view.findViewById(R.id.review_edittext);
@@ -329,14 +334,130 @@ public class HotelSingleActivity extends AppCompatActivity {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 String rate=String.valueOf(ratingBar.getRating());
                 String review=editText.getText().toString();
-                if(rate.equals("0.0")){
-                    Toast.makeText(HotelSingleActivity.this, "To give a Review you need to give at least one star", Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(review)){
-                    Toast.makeText(HotelSingleActivity.this, "Review can not be empty", Toast.LENGTH_SHORT).show();
+                if(rate.equals("1.0")){
+                    puttingData("one",rate,review);
                 }
-                else{
+                else if(rate.equals("2.0")){
+                    puttingData("two",rate,review);
+                }
+                else if(rate.equals("3.0")){
+                  puttingData("three",rate,review);
+                }
+                else if(rate.equals("4.0")){
+                   puttingData("four",rate,review);
+                }
+                else if(rate.equals("5.0")){
+                      puttingData("five",rate,review);
+                }
+
+
+            }
+        });
+        mDialog.show();
+    }
+
+    private void puttingData(String one, final String rate, final String review) {
+        Map<String,String> map = new HashMap<>();
+        map.put(one,one);
+        FirebaseFirestore
+                .getInstance()
+                .collection("HotelRating")
+                .document(hotelData).collection(one).add(map).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentReference> task) {
+                if(task.isSuccessful()){
+                    gettingRatingData(rate,review);
+                }
+            }
+        });
+
+    }
+
+    private void gettingRatingData(final String rate, final String review) {
+
+
+        FirebaseFirestore.getInstance().collection("HotelRating").document(hotelData).collection("one").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        RatingOne= task.getResult().size();
+                        FirebaseFirestore
+                                .getInstance()
+                                .collection("HotelRating")
+                                .document(hotelData).collection("two").get()
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        RatingTwo= task.getResult().size();
+                                        FirebaseFirestore
+                                                .getInstance()
+                                                .collection("HotelRating")
+                                                .document(hotelData).collection("three").get()
+                                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                        RatingThree= task.getResult().size();
+                                                        FirebaseFirestore
+                                                                .getInstance()
+                                                                .collection("HotelRating")
+                                                                .document(hotelData).collection("four").get()
+                                                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                                        RatingFour= task.getResult().size();
+
+                                                                    }
+                                                                });
+                                                        FirebaseFirestore
+                                                                .getInstance()
+                                                                .collection("HotelRating")
+                                                                .document(hotelData).collection("five").get()
+                                                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                                        RatingFive= task.getResult().size();
+                                                                      calculatingDataAndSettingData(rate,review);
+                                                                    }
+                                                                });
+                                                    }
+                                                });
+                                    }
+                                });
+                    }
+                });
+
+
+    }
+
+    private void calculatingDataAndSettingData(final String rate, final String review) {
+        double x1 = RatingOne*1;
+        double x2 = RatingTwo*2;
+        double x3= RatingThree*3;
+        double x4= RatingFour*4;
+        double x5 = RatingFive*5;
+        double XX =x1+x2+x3+x4+x5;
+        double X  =RatingOne+RatingTwo+RatingThree+RatingFour+RatingFive;
+
+        double xxResult = Double.parseDouble(String.valueOf(XX));
+        double bigResult = xxResult/X;
+        DecimalFormat format  = new DecimalFormat("#0.0");
+        String finalResult =format.format(bigResult);
+
+        if(rate.equals("0.0")){
+            Toast.makeText(HotelSingleActivity.this, "To give a Review you need to give at least one star", Toast.LENGTH_SHORT).show();
+        }else if(TextUtils.isEmpty(review)){
+            Toast.makeText(HotelSingleActivity.this, "Review can not be empty", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Map<String,String> newMap = new HashMap<>();
+            newMap.put("rating",finalResult);
+            FirebaseFirestore.getInstance().collection("Hotel").document(id).set(newMap,SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
                     Map<String,String>  map  = new HashMap<>();
                     map.put("rating",rate);
                     map.put("review",review);
@@ -348,10 +469,12 @@ public class HotelSingleActivity extends AppCompatActivity {
                                     mDialog.dismiss();
                                 }
                             });
+
                 }
-            }
-        });
-        mDialog.show();
+            });
+
+
+        }
     }
 
 

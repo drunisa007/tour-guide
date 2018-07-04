@@ -8,10 +8,21 @@ public class ResortModel {
     private String name,url;
     private String data;
 
-    public ResortModel(String name, String url, String data) {
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    private String rating;
+
+    public ResortModel(String name, String url, String data,String rating) {
         this.name = name;
         this.url = url;
         this.data = data;
+        this.rating= rating;
     }
 
     public String getData() {

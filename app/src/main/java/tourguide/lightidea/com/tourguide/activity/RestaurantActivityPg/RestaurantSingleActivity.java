@@ -40,6 +40,8 @@ public class RestaurantSingleActivity extends AppCompatActivity {
 
     private  FirestoreRecyclerAdapter<TraditionalFoodModel,MyTraditionalFoodViewHolder>  adapter;
 
+    private Query queryOne;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,10 +74,17 @@ public class RestaurantSingleActivity extends AppCompatActivity {
     private void workingForRecyclerView() {
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
         mRecyclerView.setHasFixedSize(true);
-        Query query = FirebaseFirestore.getInstance().collection("Restaurant").document(data).collection("data").document(all).collection("data");
+        if(all.equals("all")){
+             queryOne = FirebaseFirestore.getInstance().collection("Restaurant").document(data).collection("data").document("all").collection("data");
+
+        }
+        else{
+             queryOne = FirebaseFirestore.getInstance().collection("Restaurant").document(data).collection("data").document("all").collection("data").whereEqualTo("type",all);
+
+        }
         FirestoreRecyclerOptions<TraditionalFoodModel> options = new FirestoreRecyclerOptions.
                 Builder<tourguide.lightidea.com.tourguide.model.RestaurantModel.TraditionalFoodModel>()
-                .setQuery(query,TraditionalFoodModel.class)
+                .setQuery(queryOne,TraditionalFoodModel.class)
                 .build();
 
         adapter = new FirestoreRecyclerAdapter<TraditionalFoodModel, MyTraditionalFoodViewHolder>(options) {

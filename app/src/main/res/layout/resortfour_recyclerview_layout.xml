@@ -80,7 +80,6 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginStart="16dp"
                     android:text="3.4"
-                    android:textColor="@color/colorWhite"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"

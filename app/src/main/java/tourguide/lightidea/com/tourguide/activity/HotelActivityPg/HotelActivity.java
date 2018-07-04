@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -156,12 +157,15 @@ public class HotelActivity extends AppCompatActivity {
 
         adapter = new FirestoreRecyclerAdapter<HotelModel, MyHotelViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull MyHotelViewHolder holder, final int position, @NonNull final HotelModel model) {
+            protected void onBindViewHolder(@NonNull final MyHotelViewHolder holder, final int position, @NonNull final HotelModel model) {
                 holder.mTextViewEng.setText(model.getName());
                 Glide.with(HotelActivity.this).load(model.getUrl()).into(holder.mImageView);
+                holder.textRating.setText(model.getRating());
                 holder.mCardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+                        DocumentSnapshot snapshot = getSnapshots().getSnapshot(holder.getAdapterPosition());
                         Intent intent = new Intent(view.getContext(), HotelSingleActivity.class);
                         intent.putExtra("name",model.getName());
                         intent.putExtra("url",model.getUrl());
@@ -173,6 +177,7 @@ public class HotelActivity extends AppCompatActivity {
                         intent.putExtra("price",model.getPrice());
                         intent.putExtra("room",model.getRoom());
                         intent.putExtra("reroom",model.getReroom());
+                        intent.putExtra("id",String.valueOf(snapshot.getId()));
                         view.getContext().startActivity(intent);
                     }
                 });
@@ -196,11 +201,13 @@ public class HotelActivity extends AppCompatActivity {
         CardView mCardView;
         TextView mTextViewEng,mTextViewBur;
         ImageView mImageView;
+        TextView textRating;
         public MyHotelViewHolder(View itemView) {
             super(itemView);
             mCardView= itemView.findViewById(R.id.hotel_cardView);
             mTextViewEng =itemView.findViewById(R.id.hotel_textview_eng);
             mImageView = itemView.findViewById(R.id.hotel_imageview);
+            textRating = itemView.findViewById(R.id.hotel_rating);
         }
     }
 }

@@ -8,11 +8,25 @@ public class FamousModel {
 
     private String name;
     private String url;
+    private String data;
+    private String famous;
 
-    public FamousModel(String name, String url, String data) {
+
+    public String getFamous() {
+        return famous;
+    }
+
+    public void setFamous(String famous) {
+        this.famous = famous;
+    }
+
+
+
+    public FamousModel(String name, String url, String data,String famous) {
         this.name = name;
         this.url = url;
         this.data = data;
+        this.famous=famous;
     }
 
     public String getData() {
@@ -23,7 +37,6 @@ public class FamousModel {
         this.data = data;
     }
 
-    private String data;
 
     public String getName() {
         return name;

@@ -1,7 +1,7 @@
 package tourguide.lightidea.com.tourguide.model.HotelModel;
 
 public class HotelModel {
-    public HotelModel(String name, String url, String data, String phone, String location, String price, String room, String reroom) {
+    public HotelModel(String name,String rating,String url, String data, String phone, String location, String price, String room, String reroom) {
         this.name = name;
         this.url = url;
         this.data = data;
@@ -10,10 +10,21 @@ public class HotelModel {
         this.price = price;
         this.room = room;
         this.reroom = reroom;
+        this.rating =rating;
     }
 
     private  String name,url,data;
     private String phone,location,price,room,reroom;
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    private String rating;
 
     public String getName() {
         return name;
