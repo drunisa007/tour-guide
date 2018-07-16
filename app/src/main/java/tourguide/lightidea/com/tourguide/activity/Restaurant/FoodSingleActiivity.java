@@ -35,6 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import tourguide.lightidea.com.tourguide.R;
+import tourguide.lightidea.com.tourguide.activity.Hotel.HotelSingleActivity;
 import tourguide.lightidea.com.tourguide.model.RestaurantModel.FoodReviewModel;
 
 public class FoodSingleActiivity extends AppCompatActivity {
@@ -61,6 +62,8 @@ public class FoodSingleActiivity extends AppCompatActivity {
     private String restData,restUrl;
 
     private FirestoreRecyclerAdapter<FoodReviewModel,MyFoodSingleReviewHolder>  adapter ;
+
+    private MaterialDialog mLoadingDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,6 +123,14 @@ public class FoodSingleActiivity extends AppCompatActivity {
                     Toast.makeText(FoodSingleActiivity.this, "Review can not be empty", Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    mLoadingDialog = new MaterialDialog.Builder(FoodSingleActiivity.this)
+                            .title("Please Wait...")
+                            .content("Posting Your Review . . .")
+                            .progress(true,0)
+                            .canceledOnTouchOutside(false)
+                            .build();
+
+                    mLoadingDialog.show();
                     Map<String,String> map  = new HashMap<>();
                     map.put("rating",rate);
                     map.put("review",review);
@@ -127,8 +138,10 @@ public class FoodSingleActiivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(FoodSingleActiivity.this, "Review has been written.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(FoodSingleActiivity.this, "Review has been Posted.", Toast.LENGTH_SHORT).show();
+                                   mLoadingDialog.dismiss();
                                     mDialog.dismiss();
+
                                 }
                             });
                 }
@@ -154,13 +167,15 @@ public class FoodSingleActiivity extends AppCompatActivity {
                 Glide.with(this).load(R.drawable.ic_action_check).into(parking_image);
             }
             else{
-
+                parking_text.setText("NO");
+                Glide.with(this).load(R.drawable.ic_action_clear).into(parking_image);
             }
         }
         else{
             parking_text.setText("NO");
             Glide.with(this).load(R.drawable.ic_action_clear).into(parking_image);
         }
+
 
 
         if(!TextUtils.isEmpty(text_book)){

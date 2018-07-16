@@ -36,6 +36,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:15.0.1'
     implementation 'com.google.maps:google-maps-services:0.2.7'
     implementation 'org.slf4j:slf4j-nop:1.7.25'
+    implementation 'info.hoang8f:android-segmented:1.0.6'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

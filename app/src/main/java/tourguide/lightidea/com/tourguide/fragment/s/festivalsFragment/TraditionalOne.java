@@ -37,6 +37,7 @@ public class TraditionalOne extends Fragment {
           private   List<String> mListName =new ArrayList<>();
            private List<String> mListData =new ArrayList<>();
            private String body,image;
+           private String language;
 
     private FirestoreRecyclerAdapter<TraditionalOneModel,TraditionalOneViewHolder> adapter;
     private int colors[]={R.color.one,R.color.two,R.color.three,R.color.four,R.color.five,R.color.six,R.color.seven,
@@ -50,6 +51,8 @@ public class TraditionalOne extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_traditional_one, container, false);
+        Bundle bundle =getArguments();
+        language = bundle.getString(getString(R.string.language));
         mRecyclerView = view.findViewById(R.id.traditional_one_recyclerview);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -69,7 +72,15 @@ public class TraditionalOne extends Fragment {
          @Override
          protected void onBindViewHolder(@NonNull TraditionalOneViewHolder holder, int position, @NonNull final TraditionalOneModel model) {
 
-             holder.mTextView.setText(model.getTitle());
+             if(language.equals("eng")){
+                 holder.mTextView.setText(model.getTitle());
+             }
+             else if(language.equals("bur")){
+                 holder.mTextView.setText(model.getTitle_bur());
+             }
+             else {
+                 holder.mTextView.setText(model.getTitle_chi());
+             }
              gettingData(model);
              holder.mExtraRecyclerView.setHasFixedSize(true);
              holder.mExtraRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -161,10 +172,26 @@ public class TraditionalOne extends Fragment {
             mListDay.clear();
             mListName.clear();
         }
-
-        String day = model.getDay();
-        String name = model.getName();
+        String day;
+        String name;
         String data = model.getData();
+        if(language.equals("eng")){
+           day=model.getDay();
+            name = model.getName();
+            body = model.getBody();
+        }
+        else if(language.equals("bur")){
+            day=model.getDay_bur();
+            name = model.getName_bur();
+            body=model.getBody_bur();
+        }
+        else {
+            day=model.getDay_chi();
+            name = model.getName_chi();
+            body=model.getBody_chi();
+        }
+
+
         if(!TextUtils.isEmpty(day)){
             for(String resultDay:day.split(",")){
                 mListDay.add(resultDay);
@@ -175,7 +202,7 @@ public class TraditionalOne extends Fragment {
             for(String resultData:data.split(",")){
                 mListData.add(resultData);
             }
-            body = model.getBody();
+
             image = model.getImage();
         }
 

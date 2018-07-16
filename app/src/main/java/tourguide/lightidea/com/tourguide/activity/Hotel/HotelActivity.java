@@ -43,6 +43,7 @@ public class HotelActivity extends AppCompatActivity {
     private Query q;
 
     private TextView mTextNOFound;
+    private String data;
 /*    5 stars is 250
             4 stars is 400
             3 stars is 20
@@ -56,11 +57,24 @@ public class HotelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel);
+
+        data = getIntent().getStringExtra("data");
+        String title;
+        if(data.equals("eng")){
+            title="hotel";
+        }
+        else if(data.equals("bur")){
+            title="hotel_B";
+        }
+        else{
+            title="hotel_C";
+        }
+
         mRecyclerView = findViewById(R.id.hotel_recyclerview);
         mToolbar = findViewById(R.id.hotel_toolbar);
         mTextNOFound = findViewById(R.id.hotel_no_found_textview_);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Hotel");
+        getSupportActionBar().setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,7 +172,35 @@ public class HotelActivity extends AppCompatActivity {
         adapter = new FirestoreRecyclerAdapter<HotelModel, MyHotelViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final MyHotelViewHolder holder, final int position, @NonNull final HotelModel model) {
-                holder.mTextViewEng.setText(model.getName());
+               final String name,phone,location,price,room,reroom;
+                if(data.equals("eng")){
+                    holder.mTextViewEng.setText(model.getName());
+                    name=model.getName();
+                    phone=model.getPhone();
+                    location=model.getLocation();
+                    price=model.getPrice();
+                    room=model.getRoom();
+                    reroom=model.getReroom();
+                }
+
+                else if(data.equals("bur")){
+                    holder.mTextViewEng.setText(model.getName_bur());
+                    name=model.getName_bur();
+                    phone=model.getPhone_bur();
+                    location=model.getLocation_bur();
+                    price=model.getPrice_bur();
+                    room=model.getRoom_bur();
+                    reroom=model.getReroom_bur();
+                }
+                else {
+                    holder.mTextViewEng.setText(model.getName_chi());
+                    name=model.getName_chi();
+                    phone=model.getPhone_chi();
+                    location=model.getLocation_chi();
+                    price=model.getPrice_chi();
+                    room=model.getRoom_chi();
+                    reroom=model.getReroom_chi();
+                }
                 Glide.with(HotelActivity.this).load(model.getUrl()).into(holder.mImageView);
                 holder.textRating.setText(model.getRating());
                 holder.mCardView.setOnClickListener(new View.OnClickListener() {
@@ -167,16 +209,16 @@ public class HotelActivity extends AppCompatActivity {
 
                         DocumentSnapshot snapshot = getSnapshots().getSnapshot(holder.getAdapterPosition());
                         Intent intent = new Intent(view.getContext(), HotelSingleActivity.class);
-                        intent.putExtra("name",model.getName());
+                        intent.putExtra("name",name);
                         intent.putExtra("url",model.getUrl());
                         intent.putExtra("pos",position);
                         intent.putExtra("data",model.getData());
                         intent.putExtra("position","hotel_about");
-                        intent.putExtra("phone",model.getPhone());
-                        intent.putExtra("location",model.getLocation());
-                        intent.putExtra("price",model.getPrice());
-                        intent.putExtra("room",model.getRoom());
-                        intent.putExtra("reroom",model.getReroom());
+                        intent.putExtra("phone",phone);
+                        intent.putExtra("location",location);
+                        intent.putExtra("price",price);
+                        intent.putExtra("room",room);
+                        intent.putExtra("reroom",reroom);
                         intent.putExtra("id",String.valueOf(snapshot.getId()));
                         view.getContext().startActivity(intent);
                     }

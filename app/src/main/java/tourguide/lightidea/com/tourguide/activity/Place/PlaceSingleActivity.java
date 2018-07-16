@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class PlaceSingleActivity extends AppCompatActivity {
     private List<Fragment> mListFragment;
     private String pos;
     private String lag,log;
+    private String language;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class PlaceSingleActivity extends AppCompatActivity {
       position=getIntent().getStringExtra("position");
       lag = getIntent().getStringExtra("lag");
       log = getIntent().getStringExtra("log");
+      language = getIntent().getStringExtra("language");
+        Log.d("arun",language+"");
 
 
         givingId();
@@ -66,6 +70,7 @@ public class PlaceSingleActivity extends AppCompatActivity {
         bd.putString("pos",pos);
         bd.putString("lag",lag);
         bd.putString("log",log);
+        bd.putString("language",language);
         one.setArguments(bd);
         LocationTwo two = new LocationTwo();
         two.setArguments(bd);

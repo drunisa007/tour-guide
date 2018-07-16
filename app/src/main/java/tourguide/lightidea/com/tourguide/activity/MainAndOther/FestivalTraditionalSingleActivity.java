@@ -23,6 +23,8 @@ public class FestivalTraditionalSingleActivity extends AppCompatActivity {
     private TextView mTextView;
     private Toolbar mToolbar;
 
+    private TextView title;
+
     private String pagodaName, pagodaUrl, pagodaText;
 
     @Override
@@ -54,6 +56,8 @@ public class FestivalTraditionalSingleActivity extends AppCompatActivity {
         mTextView.setText(pagodaText);
 
         mToolbar = findViewById(R.id.pagodaone_single_toolbar);
+
+        title = findViewById(R.id.festival_traditional_single_title);
     }
 
     private void settingToolbar() {
@@ -61,6 +65,7 @@ public class FestivalTraditionalSingleActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(pagodaName);
+        title.setText(pagodaName);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

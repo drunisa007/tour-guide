@@ -12,5 +12,8 @@ screenshot.</string>
 
     <string name="api">AIzaSyCSQKKcek4oycRpXkgEAA1ZY4GWn-e0Feg</string>
     <string name="title_activity_maps">Map</string>
+    <string name="language">language</string>
+
+
 
 </resources>

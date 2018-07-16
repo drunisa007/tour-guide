@@ -35,11 +35,16 @@ public class marketFive extends Fragment {
       private RecyclerView mRecyclerView;
     private FirestoreRecyclerAdapter<MarketModel,MarketHolder> adapter;
 
+    private String language;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_market_five, container, false);
+        Bundle bundle = getArguments();
+        language = bundle.getString("language");
         mRecyclerView = view.findViewById(R.id.marketfive_recyclerview);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
@@ -58,7 +63,17 @@ public class marketFive extends Fragment {
         adapter = new FirestoreRecyclerAdapter<MarketModel, MarketHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MarketHolder holder, int position, @NonNull final MarketModel model) {
-                holder.mTextView.setText(model.getName());
+
+                if(language.equals("eng")){
+                    holder.mTextView.setText(model.getName());
+                }
+                else if(language.equals("bur")){
+                    holder.mTextView.setText(model.getName_bur());
+                }
+                else {
+                    holder.mTextView.setText(model.getName_chi());
+                }
+                holder.mTextView_mart_type.setText(model.getType());
                 Glide.with(getActivity()).load(model.getUrl()).into(holder.mImageView);
 
 
@@ -72,6 +87,7 @@ public class marketFive extends Fragment {
                         intent.putExtra("pos","0");
                         intent.putExtra("lag",model.getLag());
                         intent.putExtra("log",model.getLog());
+                        intent.putExtra("language",language);
                         getActivity().startActivity(intent);
                     }
                 });

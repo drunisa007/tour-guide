@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,10 +53,18 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.MyViewHold
                @Override
                public void onClick(View view) {
                    if(act==1){
-                       Intent intent = new Intent(view.getContext(),MainActivity.class);
-                       intent.putExtra("city",list.get(position));
-                       view.getContext().startActivity(intent);
-                       activity.finish();
+                       if(list.get(position).equals("Mandalay")){
+                           Intent intent = new Intent(view.getContext(),MainActivity.class);
+                           intent.putExtra("city",list.get(position));
+                           view.getContext().startActivity(intent);
+                           activity.finish();
+                       }
+                       else{
+                           Toast.makeText(activity, "Comming Soon.", Toast.LENGTH_SHORT).show();
+                           activity.recreate();
+
+                       }
+
                    }
                    else{
                        Intent intent = new Intent(view.getContext(),RestaurantSingleActivity.class);

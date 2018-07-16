@@ -48,7 +48,19 @@
             android:background="@color/colorWhite"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="2dp"
+            android:orientation="vertical"
             android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/festival_traditional_single_title"
+                android:text="HAPPY NEW YEAR"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="4dp"
+                android:textAlignment="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/for_extra_desing_border"
+                android:layout_height="wrap_content" />
             <TextView
                 android:layout_width="match_parent"
                 android:text="@string/testAbout"

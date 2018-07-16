@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterViewFlipper;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -48,7 +49,10 @@ import java.util.List;
 import java.util.Map;
 
 import tourguide.lightidea.com.tourguide.R;
+import tourguide.lightidea.com.tourguide.adapter.HotelAdapter.FlipperAdapter;
 import tourguide.lightidea.com.tourguide.model.HotelModel.FacModel;
+import tourguide.lightidea.com.tourguide.model.HotelModel.HotelModel;
+import tourguide.lightidea.com.tourguide.model.HotelModel.HotelRoomModel;
 import tourguide.lightidea.com.tourguide.model.HotelModel.HotelSingleReview;
 
 public class HotelSingleActivity extends AppCompatActivity {
@@ -63,6 +67,7 @@ public class HotelSingleActivity extends AppCompatActivity {
 
 
     private List<FacModel> mList =new ArrayList<>();
+    private List<HotelRoomModel> mHotelRoomList = new ArrayList<>();
 
     private RecyclerView mRecycler;
 
@@ -75,7 +80,14 @@ public class HotelSingleActivity extends AppCompatActivity {
     private int RatingOne,RatingTwo,RatingThree,RatingFour,RatingFive;
     private MaterialDialog mDialog;
 
- private    FirestoreRecyclerAdapter<HotelSingleReview,MyHotelSingleReviewRecyclerAdapter> adapter;
+    private TextView hotel_single_title;
+    private FirestoreRecyclerAdapter<HotelSingleReview,MyHotelSingleReviewRecyclerAdapter> adapter;
+
+    private AdapterViewFlipper hotel_single_adapterview_flipper;
+
+    //Dialog For LOading
+
+    private MaterialDialog mLoadingDialog;
 
 
     @Override
@@ -111,12 +123,42 @@ public class HotelSingleActivity extends AppCompatActivity {
 
         gettingData(hotelData);
 
+        gettingHotelRoomData(hotelData);
+
         workingforReviewRecyclerView();
 
 
 
 
 
+    }
+
+    private void gettingHotelRoomData(String hotelData) {
+
+        CollectionReference reference= db.collection("hotel_about").document("image").collection(hotelData);
+
+        reference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for(DocumentSnapshot documentSnapshot:task.getResult()){
+                        HotelRoomModel model = documentSnapshot.toObject(HotelRoomModel.class);
+                        mHotelRoomList.add(model);
+                        workingForHotelRoomData(mHotelRoomList);
+                    }
+                } else {
+                    Log.d("arun", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+    }
+
+    private void workingForHotelRoomData(List<HotelRoomModel> list) {
+        List<HotelRoomModel> mhotelList =list;
+        FlipperAdapter adapter = new FlipperAdapter(HotelSingleActivity.this, (ArrayList<HotelRoomModel>) mhotelList);
+        hotel_single_adapterview_flipper.setAdapter(adapter);
+        hotel_single_adapterview_flipper.setFlipInterval(1000);
+        hotel_single_adapterview_flipper.startFlipping();
     }
 
     private void workingforReviewRecyclerView() {
@@ -171,6 +213,8 @@ public class HotelSingleActivity extends AppCompatActivity {
         hotelPhone.setText(phone);
         hotelLocation.setText(location);
         hotelPrice.setText(price);
+        hotel_single_title.setText(hotelName);
+
         //hotelRoom.setText(room);
        // hotelReroom.setText(reroom);
     }
@@ -294,6 +338,8 @@ public class HotelSingleActivity extends AppCompatActivity {
     }
 
     private void givingId() {
+        hotel_single_adapterview_flipper=findViewById(R.id.hotel_single_adapterview_flipper);
+        hotel_single_title=findViewById(R.id.hotel_single_title);
         mToolbar = findViewById(R.id.hotel_single_toolbar);
         mImageView = findViewById(R.id.hotel_single_imageview);
         mRecycler =findViewById(R.id.hotel_single_recyclerview);
@@ -334,6 +380,15 @@ public class HotelSingleActivity extends AppCompatActivity {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                mLoadingDialog = new MaterialDialog.Builder(HotelSingleActivity.this)
+                        .title("Please Wait")
+                        .content("Posting Your Review . . .")
+                        .progress(true,0)
+                        .canceledOnTouchOutside(false)
+                        .build();
+
+                mLoadingDialog.show();
 
 
                 String rate=String.valueOf(ratingBar.getRating());
@@ -465,8 +520,10 @@ public class HotelSingleActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(HotelSingleActivity.this, "Review has been written.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(HotelSingleActivity.this, "Your review has been posted", Toast.LENGTH_SHORT).show();
+                                    mLoadingDialog.dismiss();
                                     mDialog.dismiss();
+
                                 }
                             });
 

@@ -8,6 +8,26 @@ public class ResortModel {
     private String name,url;
     private String data;
     private String lag;
+    private String log;
+    private String name_bur;
+
+    public String getName_bur() {
+        return name_bur;
+    }
+
+    public void setName_bur(String name_bur) {
+        this.name_bur = name_bur;
+    }
+
+    public String getName_chi() {
+        return name_chi;
+    }
+
+    public void setName_chi(String name_chi) {
+        this.name_chi = name_chi;
+    }
+
+    private String name_chi;
 
     public String getLag() {
         return lag;
@@ -25,7 +45,7 @@ public class ResortModel {
         this.log = log;
     }
 
-    private String log;
+
 
     public String getRating() {
         return rating;
@@ -37,13 +57,15 @@ public class ResortModel {
 
     private String rating;
 
-    public ResortModel(String name, String url, String data,String rating,String lag,String log) {
+    public ResortModel(String name, String url, String data,String rating,String lag,String log,String name_bur,String name_chi) {
         this.name = name;
         this.url = url;
         this.data = data;
         this.rating= rating;
         this.lag =lag;
         this.log = log;
+        this.name_bur  =name_bur;
+        this.name_chi = name_chi;
     }
 
     public String getData() {

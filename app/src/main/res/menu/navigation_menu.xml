@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Setting">
+        <menu>
+            <item android:title="Receive Tickets"
+                android:id="@+id/receive_ticket"
+                android:icon="@drawable/pool"
+                />
+
+        </menu>
+    </item>
+
+    <item android:title="About Application">
+        <menu>
+            <item android:title="About"
+                android:id="@+id/about"
+                android:icon="@drawable/pool"
+                />
+            <item android:title="Exit"
+                android:id="@+id/exit"
+                android:icon="@drawable/eat"
+                />
+        </menu>
+    </item>
+
+
+</menu>

@@ -30,11 +30,12 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
     private List<MainList> mList;
 
     private List mObjectList = new ArrayList();
+    private String button;
 
-
-    public MainRecyclerAdapter(Activity applicationContext, List<MainList> list){
+    public MainRecyclerAdapter(Activity applicationContext, List<MainList> list, String button){
         context=applicationContext;
         mList=list;
+        this.button = button;
         mObjectList.add(PlaceActiviy.class);
         mObjectList.add(FestivalActivity.class);
         mObjectList.add(HotelActivity.class);
@@ -59,6 +60,17 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
             public void onClick(View view) {
 
                Intent intent = new Intent(context, (Class<?>) mObjectList.get(position));
+               String data ="bur";
+               if(button.equals("0")){
+                   data = "bur";
+               }
+               else if(button.equals("1")){
+                   data = "eng";
+               }
+               else if(button.equals("2")){
+                   data = "chi";
+               }
+               intent.putExtra("data",data);
                context.startActivity(intent);
             }
 

@@ -37,6 +37,9 @@ public class resortFour extends Fragment {
 
     private FirestoreRecyclerAdapter<ResortModel,ResortHolder> adapter;
 
+    private String language;
+
+
 
 
 
@@ -45,6 +48,9 @@ public class resortFour extends Fragment {
                              Bundle savedInstanceState) {
 
         view= inflater.inflate(R.layout.fragment_resort_four, container, false);
+        Bundle bundle = getArguments();
+        language = bundle.getString("language");
+
         mRecyclerview = view.findViewById(R.id.resortfour_reyclerview);
         mRecyclerview.setHasFixedSize(true);
         mRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -66,9 +72,16 @@ public class resortFour extends Fragment {
         adapter= new FirestoreRecyclerAdapter<ResortModel, ResortHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ResortHolder holder, int position, @NonNull final ResortModel model) {
-                holder.mTextView.setText(model.getName());
+                if(language.equals("eng")){
+                    holder.mTextView.setText(model.getName());
+                }
+                else if(language.equals("bur")){
+                    holder.mTextView.setText(model.getName_bur());
+                }
+                else {
+                    holder.mTextView.setText(model.getName_chi());
+                }
                 Glide.with(getActivity()).load(model.getUrl()).into(holder.mImageView);
-                holder.mRating.setText(model.getRating());
                 holder.mCardview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -79,6 +92,7 @@ public class resortFour extends Fragment {
                         intent.putExtra("pos","0");
                         intent.putExtra("lag",model.getLag());
                         intent.putExtra("log",model.getLog());
+                        intent.putExtra("language",language);
                         getActivity().startActivity(intent);
                     }
                 });
@@ -105,13 +119,12 @@ public class resortFour extends Fragment {
         ImageView mImageView;
         TextView mTextView;
         CardView mCardview;
-        TextView mRating;
         public ResortHolder(View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.resortfour_imageview);
             mTextView = itemView.findViewById(R.id.resortfour_textview);
             mCardview = itemView.findViewById(R.id.resortfour_cardview);
-            mRating = itemView.findViewById(R.id.resortfour_rating);
+
         }
     }
 }

@@ -31,6 +31,7 @@ public class ModernTwo extends Fragment {
     private RecyclerView mRecyclerView;
 
     private FirestoreRecyclerAdapter<ModernTwoModel,ModernTwoViewHolder> adapter;
+    private String language;
 
 
 
@@ -42,6 +43,8 @@ public class ModernTwo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view  = inflater.inflate(R.layout.fragment_moderm_two, container, false);
+        Bundle bundle =getArguments();
+        language = bundle.getString(getString(R.string.language));
         mRecyclerView = view.findViewById(R.id.modern_two_recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return view;
@@ -57,10 +60,24 @@ public class ModernTwo extends Fragment {
         adapter =new FirestoreRecyclerAdapter<ModernTwoModel, ModernTwoViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull ModernTwoViewHolder holder, int position, @NonNull final ModernTwoModel model) {
+                if(language.equals("eng")){
+                    holder.mTextViewTime.setText(model.getTime());
+                    holder.mTextViewMonth.setText(model.getMonth());
+                    holder.mTextViewDate.setText(model.getDate());
+
+                }
+                else if(language.equals("bur")){
+                    holder.mTextViewTime.setText(model.getTime_bur());
+                    holder.mTextViewMonth.setText(model.getMonth_bur());
+                    holder.mTextViewDate.setText(model.getDate_bur());
+                }
+                else {
+                    holder.mTextViewTime.setText(model.getTime_chi());
+                    holder.mTextViewMonth.setText(model.getMonth_chi());
+                    holder.mTextViewDate.setText(model.getDate_chi());
+
+                }
                 holder.mTextViewLocation.setText(model.getLocation());
-                holder.mTextViewTime.setText(model.getTime());
-                holder.mTextViewMonth.setText(model.getMonth());
-                holder.mTextViewDate.setText(model.getDate());
                 Glide.with(getActivity()).load(model.getUrl()).into(holder.mImageView);
 
 
@@ -74,6 +91,7 @@ public class ModernTwo extends Fragment {
                         intent.putExtra("pos","1");
                         intent.putExtra("lag",model.getLag());
                         intent.putExtra("log",model.getLog());
+                        intent.putExtra(getString(R.string.language),language);
                         getActivity().startActivity(intent);
                     }
                 });

@@ -77,7 +77,7 @@ public class LocationTwo extends Fragment {
                 DoubleLong=Double.parseDouble(bundle.getString("log"));
             }
 
-
+            Log.e("arun",DoubleLag+"");
         }
 
         initMap();

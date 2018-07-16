@@ -40,6 +40,7 @@ public class RestaurantSingleActivity extends AppCompatActivity {
     private  FirestoreRecyclerAdapter<TraditionalFoodModel,MyTraditionalFoodViewHolder>  adapter;
 
     private Query queryOne;
+    private String language;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,8 @@ public class RestaurantSingleActivity extends AppCompatActivity {
         data= getIntent().getStringExtra("data");
         title = getIntent().getStringExtra("title");
         all = getIntent().getStringExtra("all");
+
+        language = getIntent().getStringExtra("language");
 
         
         givingId();
@@ -90,16 +93,32 @@ public class RestaurantSingleActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull MyTraditionalFoodViewHolder holder, int position, @NonNull final TraditionalFoodModel model) {
                 Glide.with(RestaurantSingleActivity.this).load(model.getUrl()).into(holder.foodImage);
-                holder.foodName.setText(model.getName());
+                final String name,phone,address;
+                if(language.equals("eng")){
+                    name=model.getName();
+                    phone=model.getPhone();
+                    address=model.getAddress();
+                }
+                else if(language.equals("bur")){
+                    name=model.getName_bur();
+                    phone=model.getPhone_bur();
+                    address=model.getAddress_bur();
+                }
+                else{
+                    name=model.getName_chi();
+                    phone=model.getPhone_chi();
+                    address=model.getAddress_chi();
+                }
+                holder.foodName.setText(name);
                 holder.mCardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent  = new Intent(RestaurantSingleActivity.this,FoodSingleActiivity.class);
-                        intent.putExtra("title",model.getName());
+                        intent.putExtra("title",name);
                         intent.putExtra("park",model.getPark());
                         intent.putExtra("book",model.getBook());
-                        intent.putExtra("phone",model.getPhone());
-                        intent.putExtra("address",model.getAddress());
+                        intent.putExtra("phone",phone);
+                        intent.putExtra("address",address);
                         intent.putExtra("url",model.getUrl());
                         intent.putExtra("data",model.getData());
                         startActivity(intent);

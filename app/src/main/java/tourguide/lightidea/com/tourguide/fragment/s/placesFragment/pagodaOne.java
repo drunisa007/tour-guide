@@ -36,6 +36,8 @@ public class pagodaOne extends Fragment {
 
     private FirestoreRecyclerAdapter adapter;
 
+    private String language;
+
 
     public pagodaOne() {
 
@@ -46,7 +48,11 @@ public class pagodaOne extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
          v=inflater.inflate(R.layout.fragment_pagoda_one, container, false);
 
+
          givingId(v);
+        Bundle bundle = getArguments();
+        language = bundle.getString("language");
+
 
         return  v;
     }
@@ -80,7 +86,19 @@ public class pagodaOne extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull PagodaHolder holder, final int position, @NonNull final PagodaModel model) {
-                holder.textView.setText(model.getName());
+
+                if(language.equals("eng")){
+                    holder.textView.setText(model.getName());
+                }
+                else if(language.equals("bur")){
+                    holder.textView.setText(model.getName_bur());
+                }
+                else {
+                    holder.textView.setText(model.getName_chi());
+                }
+
+
+
                 Glide.with(getActivity()).load(model.getUrl()).into(holder.imageView);
 
 
@@ -94,6 +112,7 @@ public class pagodaOne extends Fragment {
                         intent.putExtra("pos","0");
                         intent.putExtra("lag",model.getLag());
                         intent.putExtra("log",model.getLog());
+                        intent.putExtra("language",language);
                          getActivity().startActivity(intent);
                     }
                 });

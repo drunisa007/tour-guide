@@ -38,6 +38,8 @@ public class historicTwo extends Fragment {
     private  FirestoreRecyclerAdapter<PagodaModel,HistoricHolder> adapter ;
 
     private RecyclerView mRecyclerview;
+    private String language;
+
 
 
     @Override
@@ -46,6 +48,9 @@ public class historicTwo extends Fragment {
 
         view= inflater.inflate(R.layout.fragment_historic_two, container, false);
         mRecyclerview = view.findViewById(R.id.historic_two_recyclerview);
+        Bundle bundle = getArguments();
+        language = bundle.getString("language");
+
         return view;
     }
 
@@ -76,7 +81,15 @@ public class historicTwo extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull HistoricHolder holder, int position, @NonNull final PagodaModel model) {
-                holder.mTextViiew.setText(model.getName());
+                if(language.equals("eng")){
+                    holder.mTextViiew.setText(model.getName());
+                }
+                else if(language.equals("bur")){
+                    holder.mTextViiew.setText(model.getName_bur());
+                }
+                else {
+                    holder.mTextViiew.setText(model.getName_chi());
+                }
                 Glide.with(getActivity()).load(model.getUrl()).into(holder.mImageView);
 
 
@@ -90,6 +103,7 @@ public class historicTwo extends Fragment {
                         intent.putExtra("pos","0");
                         intent.putExtra("lag",model.getLag());
                         intent.putExtra("log",model.getLog());
+                        intent.putExtra("language",language);
                         getActivity().startActivity(intent);
                     }
                 });

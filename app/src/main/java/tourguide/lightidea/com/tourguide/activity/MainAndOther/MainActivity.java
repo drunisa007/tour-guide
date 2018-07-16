@@ -11,10 +11,15 @@ import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -23,11 +28,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -44,6 +53,7 @@ import com.google.android.gms.location.LocationSettingsStatusCodes;
 import java.util.ArrayList;
 import java.util.List;
 
+import info.hoang8f.android.segmented.SegmentedGroup;
 import tourguide.lightidea.com.tourguide.R;
 import tourguide.lightidea.com.tourguide.activity.Restaurant.RestaurantSingleActivity;
 import tourguide.lightidea.com.tourguide.adapter.DialogAdapter.DialogAdapter;
@@ -51,7 +61,7 @@ import tourguide.lightidea.com.tourguide.adapter.recyclerAdapter.MainRecyclerAda
 import tourguide.lightidea.com.tourguide.model.MainList;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG ="Main" ;
     private Toolbar toolbar;
@@ -63,8 +73,19 @@ public class MainActivity extends AppCompatActivity {
     private CardView mCardView;
     private static final String fine_location = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String cource_location = Manifest.permission.ACCESS_COARSE_LOCATION;
+    private NavigationView mNavView;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
 
     protected static final int Request = 001;
+    String button="0";
+
+    //segment language change button
+
+    private SegmentedGroup group ;
+    private RadioButton button_myanmar,button_english,button_chinese;
+
+    private TextView dialog_single_textview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
         doingIntent();
 
-        settingToolbar();
 
         initCollapsingToolbar();
 
@@ -181,9 +201,32 @@ public class MainActivity extends AppCompatActivity {
 
     //All the id giving Here
     private void givingId() {
+
+        group = findViewById(R.id.button_king);
+        button_myanmar = findViewById(R.id.button_myanmar);
+        button_english = findViewById(R.id.button_english);
+        button_chinese = findViewById(R.id.button_chinese);
+         button = readLanguage();
+
+        if(button.equals("0")){
+            button_myanmar.setChecked(true);
+        }
+        else if(button.equals("1")){
+            button_english.setChecked(true);
+        }
+        else if(button.equals("2")){
+            button_chinese.setChecked(true);
+        }
+
+
         CollapsingToolbarLayout c = findViewById(R.id.main_activity_collapsing_toolbar);
         c.setTitle("");
         toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Flash Tour");
+        mNavView = findViewById(R.id.main_navigationview);
+        mDrawerLayout =  findViewById(R.id.main_drawerlayout);
         mRecyclerView=findViewById(R.id.recyclerview);
         mCity = findViewById(R.id.main_city);
         mCardView=findViewById(R.id.main_cardview);
@@ -192,6 +235,36 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showingDialog();
+            }
+        });
+
+
+
+        mToggle = new ActionBarDrawerToggle(MainActivity.this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
+        mToggle.syncState();
+        mDrawerLayout.addDrawerListener(mToggle);
+        mNavView.setNavigationItemSelectedListener(this);
+
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.button_myanmar:
+                        saveLanguage("0");
+                        recreate();
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.button_english:
+                        saveLanguage("1");
+                        recreate();
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                    case R.id.button_chinese:
+                        saveLanguage("2");
+                        recreate();
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        break;
+                }
             }
         });
 
@@ -223,7 +296,7 @@ public class MainActivity extends AppCompatActivity {
         View view= mDialog.getView();
 
 
-
+        dialog_single_textview=view.findViewById(R.id.dialog_single_textvewi);
 
         RecyclerView dialog_recyclerview = view.findViewById(R.id.dialog_recyclerview);
         dialog_recyclerview.setHasFixedSize(true);
@@ -238,31 +311,90 @@ public class MainActivity extends AppCompatActivity {
         list.add("Sagaing");
         list.add("Myint Kyi Nar");
         list.add("Mu Sae");
+        List<String> list_bur=new ArrayList<>();
+        list_bur.add("Mandalay_Bur");
+        list_bur.add("Mandalay_Bur");
+        list_bur.add("Mandalay_Bur");
+        list_bur.add("Mandalay_Bur");
+        list_bur.add("Mandalay_Bur");
+        list_bur.add("Mandalay_Bur");
+        list_bur.add("Mandalay_Bur");
+        list_bur.add("Mandalay_Bur");
+        List<String> list_chi=new ArrayList<>();
+        list_chi.add("Mandalay_Chi");
+        list_chi.add("Mandalay_Bur");
+        list_chi.add("Mandalay_Bur");
+        list_chi.add("Mandalay_Bur");
+        list_chi.add("Mandalay_Bur");
+        list_chi.add("Mandalay_Bur");
+        list_chi.add("Mandalay_Bur");
+        list_chi.add("Mandalay_Bur");
+        list_chi.add("Mandalay_Chi");
         List mList = new ArrayList();
         mList.add(RestaurantSingleActivity.class);
         mList.add(MainActivity.class);
-        dialog_recyclerview.setAdapter(new DialogAdapter(list,MainActivity.this,1,mList,"haha","haha"));
+        if(button.equals("0")){
+            dialog_single_textview.setText("Choose Food M");
+            dialog_recyclerview.setAdapter(new DialogAdapter(list_bur,MainActivity.this,1,mList,"haha","haha"));
+        }
+        else if(button.equals("1")){
+            dialog_single_textview.setText("Choose Food ");
+
+            dialog_recyclerview.setAdapter(new DialogAdapter(list,MainActivity.this,1,mList,"haha","haha"));
+
+        }
+        else{
+            dialog_single_textview.setText("Choose Food C");
+
+            dialog_recyclerview.setAdapter(new DialogAdapter(list_chi,MainActivity.this,1,mList,"haha","haha"));
+
+        }
         mDialog.show();
 
     }
 
-    private void settingToolbar() {
-        setSupportActionBar(toolbar);
-    }
+
 
     private void settingRecyclerView() {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,3));
-        mRecyclerView.setAdapter(new MainRecyclerAdapter(MainActivity.this,mList));
+        mRecyclerView.setAdapter(new MainRecyclerAdapter(MainActivity.this,mList,button));
     }
 
     private void settingList() {
-        mList.add(new MainList("Place",R.drawable.place));
-        mList.add(new MainList("Festival",R.drawable.festival));
-        mList.add(new MainList("Hotel",R.drawable.hotel));
-        mList.add(new MainList("Restaurant",R.drawable.eat));
-        mList.add(new MainList("Taxi",R.drawable.taxi));
-        mList.add(new MainList("Currency",R.drawable.currency));
+
+        String name1,name2,name3,name4,name5,name6;
+
+        if(button.equals("1")){
+            name1="Place";
+            name2="Festival";
+            name3="Hotel";
+            name4="Restaurant";
+            name5="Taxi";
+            name6="Currency";
+        }
+        else if(button.equals("0")){
+            name1="Place_Bur";
+            name2="Festival_Bur";
+            name3="Hotel_Bur";
+            name4="Restaurant_BUr";
+            name5="Taxi-Bur";
+            name6="Currency-Bur";
+        }
+        else{
+            name1="Place_Chi";
+            name2="Festival_chi";
+            name3="Hotel_Chi";
+            name4="Restaurant-chi";
+            name5="Taxi_Chi";
+            name6="Currency_Chi";
+        }
+        mList.add(new MainList(name1,R.drawable.place));
+        mList.add(new MainList(name2,R.drawable.festival));
+        mList.add(new MainList(name3,R.drawable.hotel));
+        mList.add(new MainList(name4,R.drawable.eat));
+        mList.add(new MainList(name5,R.drawable.taxi));
+        mList.add(new MainList(name6,R.drawable.currency));
 
 
 
@@ -341,6 +473,21 @@ break;
 
     }
 
+    private String readLanguage() {
+        SharedPreferences sharedPref = getSharedPreferences("language", Context.MODE_PRIVATE);
+        String default_data = "0";
+        String value = sharedPref.getString("data", default_data);
+        return value;
+
+    }
+
+    private void saveLanguage(String value) {
+        SharedPreferences sharedPref = getSharedPreferences("language", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("data", value);
+        editor.commit();
+    }
+
     private void saveFile(String value) {
         SharedPreferences sharedPref = getSharedPreferences("mySave", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -356,5 +503,46 @@ break;
 
 
 
+    }
+    public void onBackPressed() {
+
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else {
+            super.onBackPressed();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                finishAffinity();
+            }
+        }
+
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.about){
+            Toast.makeText(this, "about", Toast.LENGTH_SHORT).show();
+        }
+        else if(id==R.id.exit){
+            new  MaterialDialog.Builder(this)
+                    .title("Exit")
+                    .content("Are u sure want to exit")
+                    .positiveText("Yes")
+                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                finishAffinity();
+                            }
+                        }
+                    })
+                    .negativeText("Cancel")
+                    .show();
+        }
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
     }
 }

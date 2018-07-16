@@ -40,12 +40,17 @@ public class famousThree extends Fragment {
 
     private FirestoreRecyclerAdapter<FamousModel,FamousHolder> adapter;
 
+    private String language;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view=inflater.inflate(R.layout.fragment_famour_three, container, false);
+        Bundle bundle = getArguments();
+        language = bundle.getString("language");
 
         mRecyclerView = view.findViewById(R.id.famousthree_recyclerview);
         mRecyclerView.setHasFixedSize(true);
@@ -72,38 +77,44 @@ public class famousThree extends Fragment {
        adapter = new FirestoreRecyclerAdapter<FamousModel, FamousHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final FamousHolder holder, int position, @NonNull final FamousModel model) {
-                holder.mTextView.setText(model.getName());
+
+                String name = model.getName();
+
+                if(language.equals("eng")){
+                    holder.mTextView.setText(model.getName());
+                    holder.mAbout.setText(model.getFamous());
+                    holder.famours_textView.setText("Why it is Famous ? ");
+                }
+                else if(language.equals("bur")){
+                    holder.mTextView.setText(model.getName_bur());
+                    name = model.getName_bur();
+                    holder.famours_textView.setText("Why it is Famous Bur? ");
+                    holder.mAbout.setText(model.getFamous_bur());
+                }
+                else {
+                    holder.mTextView.setText(model.getName_chi());
+                    name = model.getName_chi();
+                    holder.famours_textView.setText("Why it is Famous Chi? ");
+                    holder.mAbout.setText(model.getFamous_chi());
+                }
                 Glide.with(getActivity()).load(model.getUrl()).into(holder.mImageView);
-
-                holder.mIcon.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(id==0){
-                            Glide.with(getActivity()).load(R.drawable.like).into(holder.mIcon);
-                            id=1;
-                        }
-                        else{
-                            Glide.with(getActivity()).load(R.drawable.unlike).into(holder.mIcon);
-                            id=0;
-                        }
-
-                    }
-                });
+                final String finalName = name;
                 holder.mCardview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getActivity(),PlaceSingleActivity.class);
-                        intent.putExtra("name",model.getName());
+                        intent.putExtra("name", finalName);
                         intent.putExtra("data",model.getData());
                         intent.putExtra("position","famous_about");
                         intent.putExtra("pos","0");
                         intent.putExtra("lag",model.getLag());
                         intent.putExtra("log",model.getLog());
+                        intent.putExtra("language",language);
                         getActivity().startActivity(intent);
                     }
                 });
 
-                holder.mAbout.setText(model.getFamous());
+
             }
 
             @NonNull
@@ -126,16 +137,16 @@ public class famousThree extends Fragment {
     private class FamousHolder extends RecyclerView.ViewHolder {
         ImageView mImageView;
         TextView mTextView;
-        ImageView mIcon;
         TextView mAbout;
         CardView mCardview;
+        TextView famours_textView;
         public FamousHolder(View itemView) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.famousthree_imageview);
             mTextView = itemView.findViewById(R.id.famousthree_textview);
-            mIcon = itemView.findViewById(R.id.famousthree_imageview_like);
             mAbout = itemView.findViewById(R.id.famousthree_textview_why);
             mCardview = itemView.findViewById(R.id.famousthree_cardview);
+            famours_textView=itemView.findViewById(R.id.why_famous);
 
         }
     }

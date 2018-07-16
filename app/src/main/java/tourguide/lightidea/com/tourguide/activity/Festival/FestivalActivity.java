@@ -23,12 +23,16 @@ public class FestivalActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private List<String> mListName = new ArrayList<>();
     private List<Fragment> mListFragment = new ArrayList<>();
+    private String data;
+    private String title;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_festival);
+
+        data = getIntent().getStringExtra("data");
 
         givingId();
 
@@ -49,19 +53,44 @@ public class FestivalActivity extends AppCompatActivity {
     }
 
     private void settingData() {
+        String string1,string2;
 
-        mListName.add("Traditional");
-        mListName.add("Modern");
+        if(data.equals("eng")){
+            string1="Traditional";
+            string2="Modern";
+            title="Festival";
+        }
+        else if(data.equals("bur")){
+            string1="Traditional_B";
+            string2="Modern_B";
+            title="Festival_B";
+        }
+        else{
+            string1="Traditional_C";
+            string2="Modern_C";
+            title="Festival_C";
+        }
 
-        mListFragment.add(new TraditionalOne());
-        mListFragment.add(new ModernTwo());
+        getSupportActionBar().setTitle(title);
+        mListName.add(string1);
+        mListName.add(string2);
+        Bundle bd   = new Bundle();
+        bd.putString(getString(R.string.language),data);
+        TraditionalOne traditionalOne = new TraditionalOne();
+        traditionalOne.setArguments(bd);
+        ModernTwo modernTwo = new ModernTwo();
+        modernTwo.setArguments(bd);
+        modernTwo.setArguments(bd);
+
+
+        mListFragment.add(traditionalOne);
+        mListFragment.add(modernTwo);
 
     }
 
     private void settingToolbar() {
 
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Festival");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

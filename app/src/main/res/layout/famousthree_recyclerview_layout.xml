@@ -10,7 +10,7 @@
     android:foreground="@drawable/ripple"
     android:id="@+id/famousthree_cardview"
     app:cardElevation="4dp"
-    android:layout_height="350dp">
+    android:layout_height="wrap_content">
 
 
 
@@ -59,7 +59,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/why_famous"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_marginBottom="88dp"
@@ -94,21 +94,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:layout_constraintVertical_bias="0.06999999" />
 
-        <ImageView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="8dp"
-            android:layout_margin="5dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/unlike"
-            android:id="@+id/famousthree_imageview_like"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.905"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/famousthree_textview_why" />
+
 
 
     </android.support.constraint.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class AboutOne extends Fragment {
     private String data;
     private String position;
     private int pos;
+    private String language;
 
     private FirestoreRecyclerAdapter<AboutOneModel,AboutOneViewHolder> adapter;
 
@@ -59,7 +61,10 @@ public class AboutOne extends Fragment {
             data = bundle.getString("data");
             position=bundle.getString("position");
             pos = Integer.parseInt(bundle.getString("pos"));
+            language = bundle.getString("language");
         }
+        Toast.makeText(getActivity(), language+"", Toast.LENGTH_SHORT).show();
+        Log.d("arun",language+"lee");
         return view;
     }
 
@@ -77,7 +82,15 @@ public class AboutOne extends Fragment {
             protected void onBindViewHolder(@NonNull AboutOneViewHolder holder, int position, @NonNull AboutOneModel model) {
 
                         if(!TextUtils.isEmpty(model.getTitle())){
-                            holder.mTextViewTitle.setText(model.getTitle());
+                            if(language.equals("eng")){
+                                holder.mTextViewTitle.setText(model.getTitle());
+                            }
+                            else if(language.equals("bur")){
+                                holder.mTextViewTitle.setText(model.getTitle_bur());
+                            }
+                            else {
+                                holder.mTextViewTitle.setText(model.getTitle_chi());
+                            }
 
                         }
                         else{
@@ -90,6 +103,15 @@ public class AboutOne extends Fragment {
 
                         if(!TextUtils.isEmpty(model.getBody())){
                             holder.mTextViewBody.setText(Html.fromHtml(model.getBody()));
+                            if(language.equals("eng")){
+                                holder.mTextViewBody.setText(model.getBody());
+                            }
+                            else if(language.equals("bur")){
+                                holder.mTextViewBody.setText(model.getBody_bur());
+                            }
+                            else {
+                                holder.mTextViewBody.setText(model.getBody_chi());
+                            }
                         }
 
 
