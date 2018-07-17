@@ -64,10 +64,10 @@ public class HotelActivity extends AppCompatActivity {
             title="hotel";
         }
         else if(data.equals("bur")){
-            title="hotel_B";
+            title="ဟိုတယ္မ်ား";
         }
         else{
-            title="hotel_C";
+            title="酒店";
         }
 
         mRecyclerView = findViewById(R.id.hotel_recyclerview);
