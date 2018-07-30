@@ -54,9 +54,16 @@
             android:name=".activity.Restaurant.RestaurantSingleActivity"
             android:theme="@style/AppTheme.NoActionBar_StatusBar" />
         <activity android:name=".activity.Restaurant.FoodSingleActiivity" />
-        <activity android:name=".activity.MainAndOther.FestivalTraditionalSingleActivity"
+        <activity android:name=".activity.MainAndOther.FestivalTraditionalSingleActivity" />
+        <activity android:name=".activity.Currency.CurrencyActivity"
+            android:theme="@style/AppTheme.NoActionBar_StatusBar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            ></activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

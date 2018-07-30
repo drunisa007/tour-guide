@@ -29,4 +29,18 @@
     <attr name="sc_tint_color" format="color" />
     <attr name="sc_checked_text_color" format="color" />
 
+    <style name="arun" >
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:gravity">center</item>
+
+        <item name="android:layout_weight">1</item>
+        <item name="android:foreground">@drawable/ripple</item>
+        <item name="android:clickable">true</item>
+        <item name="android:onClick">onCurrecyClick</item>
+
+
+    </style>
+
+
 </resources>

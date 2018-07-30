@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tourguide.lightidea.com.tourguide.R;
+import tourguide.lightidea.com.tourguide.activity.Currency.CurrencyActivity;
 import tourguide.lightidea.com.tourguide.activity.Festival.FestivalActivity;
 import tourguide.lightidea.com.tourguide.activity.Hotel.HotelActivity;
 import tourguide.lightidea.com.tourguide.activity.Place.PlaceActiviy;
@@ -40,6 +41,8 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         mObjectList.add(FestivalActivity.class);
         mObjectList.add(HotelActivity.class);
         mObjectList.add(RestaurantActivity.class);
+        mObjectList.add(CurrencyActivity.class);
+        mObjectList.add(CurrencyActivity.class);
 
     }
 
