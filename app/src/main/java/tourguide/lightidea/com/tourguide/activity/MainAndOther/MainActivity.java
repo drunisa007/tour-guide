@@ -11,6 +11,7 @@ import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -21,7 +22,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -312,41 +312,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         list.add("Myint Kyi Nar");
         list.add("Mu Sae");
         List<String> list_bur=new ArrayList<>();
-        list_bur.add("Mandalay_Bur");
-        list_bur.add("Mandalay_Bur");
-        list_bur.add("Mandalay_Bur");
-        list_bur.add("Mandalay_Bur");
-        list_bur.add("Mandalay_Bur");
-        list_bur.add("Mandalay_Bur");
-        list_bur.add("Mandalay_Bur");
-        list_bur.add("Mandalay_Bur");
+        list_bur.add("မႏၲေလး");
+        list_bur.add("ရန်ကုန်");
+        list_bur.add("ပြင်ဦးလွင်");
+        list_bur.add("တောင်ကြီး");
+        list_bur.add("လားရှိုး");
+        list_bur.add("နေပြည်တော်");
+        list_bur.add("စစ်ကိုင်း");
+        list_bur.add("ျမစ္ၾကီးနား");
+        list_bur.add("မူဆယ္");
         List<String> list_chi=new ArrayList<>();
-        list_chi.add("Mandalay_Chi");
+        list_chi.add("曼德勒");
+        list_chi.add("仰光");
         list_chi.add("Mandalay_Bur");
+        list_chi.add("东枝");
+        list_chi.add("腊戍");
+        list_chi.add("内比都");
+        list_chi.add("实皆");
         list_chi.add("Mandalay_Bur");
-        list_chi.add("Mandalay_Bur");
-        list_chi.add("Mandalay_Bur");
-        list_chi.add("Mandalay_Bur");
-        list_chi.add("Mandalay_Bur");
-        list_chi.add("Mandalay_Bur");
-        list_chi.add("Mandalay_Chi");
+        list_chi.add("Mu Sae");
         List mList = new ArrayList();
         mList.add(RestaurantSingleActivity.class);
         mList.add(MainActivity.class);
         if(button.equals("0")){
-            dialog_single_textview.setText("Choose Food M");
-            dialog_recyclerview.setAdapter(new DialogAdapter(list_bur,MainActivity.this,1,mList,"haha","haha"));
+            dialog_single_textview.setText("Choose City M");
+            dialog_recyclerview.setAdapter(new DialogAdapter(list_bur,MainActivity.this,1,mList,"haha","haha","haha"));
         }
         else if(button.equals("1")){
-            dialog_single_textview.setText("Choose Food ");
+            dialog_single_textview.setText("Choose City ");
 
-            dialog_recyclerview.setAdapter(new DialogAdapter(list,MainActivity.this,1,mList,"haha","haha"));
+            dialog_recyclerview.setAdapter(new DialogAdapter(list,MainActivity.this,1,mList,"haha","haha","haha"));
 
         }
         else{
-            dialog_single_textview.setText("Choose Food C");
+            dialog_single_textview.setText("Choose City C");
 
-            dialog_recyclerview.setAdapter(new DialogAdapter(list_chi,MainActivity.this,1,mList,"haha","haha"));
+            dialog_recyclerview.setAdapter(new DialogAdapter(list_chi,MainActivity.this,1,mList,"haha","haha","haha"));
 
         }
         mDialog.show();
@@ -366,34 +367,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String name1,name2,name3,name4,name5,name6;
 
         if(button.equals("1")){
-            name1="Place";
-            name2="Festival";
+            name1="Places to Travel";
+            name2="Festivals";
             name3="Hotel";
             name4="Restaurant";
             name5="Taxi";
             name6="Currency";
         }
         else if(button.equals("0")){
-            name1="Place_Bur";
-            name2="Festival_Bur";
-            name3="Hotel_Bur";
-            name4="Restaurant_BUr";
-            name5="Taxi-Bur";
-            name6="Currency-Bur";
+            name1="လည္စရာေနရာမ်ား";
+            name2="ပြဲေတာ္မ်ား";
+            name3="ဟိုတယ္မ်ား";
+            name4="စားေသာက္ဆိုင္မ်ား";
+            name5="ကားငွားရန္";
+            name6="ေငြလဲလွယ္ႏွုန္း";
         }
         else{
-            name1="Place_Chi";
-            name2="Festival_chi";
-            name3="Hotel_Chi";
-            name4="Restaurant-chi";
-            name5="Taxi_Chi";
-            name6="Currency_Chi";
+            name1="旅行的地方";
+            name2="节";
+            name3="酒店";
+            name4="餐厅";
+            name5="出租车";
+            name6="货币";
         }
         mList.add(new MainList(name1,R.drawable.place));
         mList.add(new MainList(name2,R.drawable.festival));
         mList.add(new MainList(name3,R.drawable.hotel));
         mList.add(new MainList(name4,R.drawable.eat));
-        mList.add(new MainList(name5,R.drawable.taxi));
         mList.add(new MainList(name6,R.drawable.currency));
 
 

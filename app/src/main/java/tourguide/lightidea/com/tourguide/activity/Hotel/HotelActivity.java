@@ -7,6 +7,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -64,10 +65,10 @@ public class HotelActivity extends AppCompatActivity {
             title="hotel";
         }
         else if(data.equals("bur")){
-            title="hotel_B";
+            title="ဟိုတယ္မ်ား";
         }
         else{
-            title="hotel_C";
+            title="酒店";
         }
 
         mRecyclerView = findViewById(R.id.hotel_recyclerview);
@@ -83,7 +84,7 @@ public class HotelActivity extends AppCompatActivity {
             }
         });
         mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         workingForRecyclerView();
     }
@@ -95,7 +96,6 @@ public class HotelActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         ///reqweerter
-        Toast.makeText(this,"hello,",Toast.LENGTH_LONG).show();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

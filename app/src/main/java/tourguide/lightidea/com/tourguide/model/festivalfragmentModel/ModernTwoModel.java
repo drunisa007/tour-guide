@@ -7,6 +7,15 @@ package tourguide.lightidea.com.tourguide.model.festivalfragmentModel;
 
 public class ModernTwoModel {
 
+    private String location,time,month,date;
+    private String time_bur,time_chi;
+    private String month_bur,month_chi;
+    private String date_bur,date_chi;
+    private String data;
+    private String url;
+    private String lag,log;
+    private String name;
+
     public String getLocation() {
         return location;
     }
@@ -127,14 +136,7 @@ public class ModernTwoModel {
         this.name = name;
     }
 
-    private String location,time,month,date;
-    private String time_bur,time_chi;
-    private String month_bur,month_chi;
-    private String date_bur,date_chi;
-    private String data;
-    private String url;
-    private String lag,log;
-    private String name;
+
 
     public ModernTwoModel(String location, String time, String month, String date, String time_bur, String time_chi, String month_bur, String month_chi, String date_bur, String date_chi, String data, String url, String lag, String log, String name) {
         this.location = location;

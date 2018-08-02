@@ -1,13 +1,12 @@
 package tourguide.lightidea.com.tourguide.activity.Place;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,11 +60,11 @@ public class PlaceActiviy extends AppCompatActivity {
 
         }
         else if(data.equals("bur")){
-            getSupportActionBar().setTitle("ေညာင္");
+            getSupportActionBar().setTitle("လည္စရာေနရာမ်ား္");
 
         }
         else{
-            getSupportActionBar().setTitle("Places_C");
+            getSupportActionBar().setTitle("旅行的地方");
 
         }
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -86,17 +85,17 @@ public class PlaceActiviy extends AppCompatActivity {
         listTitle.add("Resorts");
         listTitle.add("Markets");
         List<String> listTitle_bur=new ArrayList<>();
-        listTitle_bur.add("Pagoda_B");
-        listTitle_bur.add("Historic_B");
-        listTitle_bur.add("Famous_B");
-        listTitle_bur.add("Resorts_B");
-        listTitle_bur.add("Markets_B");
+        listTitle_bur.add("စေတီတော်");
+        listTitle_bur.add("သမိုင်းဝင်");
+        listTitle_bur.add("ေက်ာ္ၾကာေသာ");
+        listTitle_bur.add("အပန်းဖြေ");
+        listTitle_bur.add("စျေးကွက်များ");
         List<String> listTitle_chi=new ArrayList<>();
-        listTitle_chi.add("Pagoda_C");
-        listTitle_chi.add("Historic_C");
-        listTitle_chi.add("Famous_C");
-        listTitle_chi.add("Resorts_C");
-        listTitle_chi.add("Markets_C");
+        listTitle_chi.add("宝塔");
+        listTitle_chi.add("历史性");
+        listTitle_chi.add("著名");
+        listTitle_chi.add("度假村");
+        listTitle_chi.add("市场");
         Bundle bd =new Bundle();
         bd.putString("language",data);
         pagodaOne pagodaOne = new pagodaOne();

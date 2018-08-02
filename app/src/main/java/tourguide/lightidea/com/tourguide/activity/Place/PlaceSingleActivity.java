@@ -43,8 +43,6 @@ public class PlaceSingleActivity extends AppCompatActivity {
       lag = getIntent().getStringExtra("lag");
       log = getIntent().getStringExtra("log");
       language = getIntent().getStringExtra("language");
-        Log.d("arun",language+"");
-
 
         givingId();
 

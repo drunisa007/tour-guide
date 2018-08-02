@@ -150,6 +150,8 @@ public class LocationTwo extends Fragment {
             Log.e("Exception: %s", e.getMessage());
         }
     }
+
+    //&&task.getResult()!=null
     private void getDeviceLocation() {
         try {
             if (mLocationPermissionGranted) {
@@ -157,8 +159,7 @@ public class LocationTwo extends Fragment {
                 locationResult.addOnCompleteListener(getActivity(), new OnCompleteListener<Location>() {
                     @Override
                     public void onComplete(@NonNull Task<Location> task) {
-                        Log.i("arun","task is not empty");
-                        if (task.isSuccessful()&&task.getResult()!=null) {
+                        if (task.isSuccessful()) {
                             mLastKnownLocation = task.getResult();
                             mMap.setMyLocationEnabled(true);
                             mMap.getUiSettings().setMyLocationButtonEnabled(true);
@@ -176,15 +177,17 @@ public class LocationTwo extends Fragment {
                             polyLineOptions.addAll(points);
                             Polyline polyline = mMap.addPolyline(polyLineOptions);
                             polyline.setGeodesic(true);
+                            Log.d("arun","this is working");
 
-                        } else {
-                            Log.i("arun", "Current location is null. Using defaults.");
-                            Log.i("arun", "Exception: %s", task.getException());
-                            mMap.moveCamera(CameraUpdateFactory
-                                    .newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
-                            mMap.getUiSettings().setMyLocationButtonEnabled(false);
-
-                        }
+                     }
+// else {
+//                            Log.i("arun", "Current location is null. Using defaults.");
+//                            Log.i("arun", "Exception: %s", task.getException());
+//                            mMap.moveCamera(CameraUpdateFactory
+//                                    .newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
+//                            mMap.getUiSettings().setMyLocationButtonEnabled(false);
+//
+//                        }
                     }
                 });
             }

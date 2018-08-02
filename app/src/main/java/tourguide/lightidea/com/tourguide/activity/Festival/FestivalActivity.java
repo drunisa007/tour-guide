@@ -61,14 +61,14 @@ public class FestivalActivity extends AppCompatActivity {
             title="Festival";
         }
         else if(data.equals("bur")){
-            string1="Traditional_B";
-            string2="Modern_B";
-            title="Festival_B";
+            string1="ရိုးရာ";
+            string2="မော်ဒန်ပွဲတော်";
+            title="ပွဲတော်";
         }
         else{
-            string1="Traditional_C";
-            string2="Modern_C";
-            title="Festival_C";
+            string1="传统民";
+            string2="现代";
+            title="节日";
         }
 
         getSupportActionBar().setTitle(title);

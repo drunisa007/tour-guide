@@ -25,17 +25,18 @@ import tourguide.lightidea.com.tourguide.activity.Restaurant.RestaurantSingleAct
 public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.MyViewHolder> {
     List<String> list = new ArrayList<>();
     Activity activity;
-    String data,title;
+    String data,title,language;
 
     int act ;
     List mList = new ArrayList();
-    public DialogAdapter(List<String> list, Activity context, int act, List mList, String data, String title) {
+    public DialogAdapter(List<String> list, Activity context, int act, List mList, String data, String title,String language) {
         this.list= list;
         activity=context;
         this.act = act;
         this.mList = mList;
         this.data=data;
         this.title = title;
+        this.language=language;
 
     }
 
@@ -71,6 +72,7 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.MyViewHold
                        intent.putExtra("data",data);
                        intent.putExtra("title",title);
                        intent.putExtra("all",list.get(position).toLowerCase());
+                       intent.putExtra("language",language);
                        view.getContext().startActivity(intent);
                        activity.finish();
                    }

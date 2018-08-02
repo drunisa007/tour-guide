@@ -255,8 +255,8 @@ public class CurrencyActivity extends AppCompatActivity implements View.OnClickL
                         else{
                             double result= Double.parseDouble(data);
                             double one=result;
-                            double two= result*eng_usd;
-                            double three= result*chi_usd;
+                            double two= result*eng_mmk;
+                            double three= result*chi_mmk;
                             one_err=1;
                             DecimalFormat format=new DecimalFormat("0.#");
 

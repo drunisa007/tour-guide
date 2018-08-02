@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
@@ -52,6 +53,7 @@ public class RestaurantSingleActivity extends AppCompatActivity {
         all = getIntent().getStringExtra("all");
 
         language = getIntent().getStringExtra("language");
+        Toast.makeText(this, language, Toast.LENGTH_SHORT).show();
 
         
         givingId();
@@ -213,7 +215,7 @@ public class RestaurantSingleActivity extends AppCompatActivity {
         List mList = new ArrayList();
         mList.add(RestaurantSingleActivity.class);
         mList.add(MainActivity.class);
-        dialog_recyclerview.setAdapter(new DialogAdapter(list,this,0,mList,data,title));
+        dialog_recyclerview.setAdapter(new DialogAdapter(list,this,0,mList,data,title,language));
         mDialog.show();
     }
 }

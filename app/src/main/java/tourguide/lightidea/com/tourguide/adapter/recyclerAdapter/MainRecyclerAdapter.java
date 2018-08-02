@@ -42,7 +42,6 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         mObjectList.add(HotelActivity.class);
         mObjectList.add(RestaurantActivity.class);
         mObjectList.add(CurrencyActivity.class);
-        mObjectList.add(CurrencyActivity.class);
 
     }
 

@@ -47,12 +47,13 @@
                 android:id="@+id/traditional_single_foodname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:text="Shan Food"
+                android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textColor="@color/colorWhite"
-                android:textSize="21sp"
-                android:textStyle="bold" />
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
         </LinearLayout>
 
 

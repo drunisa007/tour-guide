@@ -7,6 +7,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import tourguide.lightidea.com.tourguide.R;
 
@@ -27,22 +28,22 @@ public class RestaurantActivity extends AppCompatActivity {
 
 
         if(data.equals("eng")){
-            title="Hotel";
+            title="Restaurant";
             foodOne="Traditional Food";
             foodTwo="Asian Food";
             foodThree="European Food";
         }
         else if(data.equals("bur")){
-            title="ေမာင္ေသ္ာင္သူ";
-            foodOne="Traditional FoodB";
-            foodTwo="Asian FoodB";
-            foodThree="European FoodB";
+            title="စားေသာက္ဆိုင္မ်ား";
+            foodOne="ရိုးရာအစားအသောက်";
+            foodTwo="အာရှအစားအစာ";
+            foodThree="ဥရောပအစားအစာ";
         }
         else{
-            title="Hotel_C";
-            foodOne="Traditional FoodC";
-            foodTwo="Asian FoodC";
-            foodThree="European FoodC";
+            title="餐厅";
+            foodOne="传统食品";
+            foodTwo="亚洲食品";
+            foodThree="欧洲食品";
         }
 
         givingId();
