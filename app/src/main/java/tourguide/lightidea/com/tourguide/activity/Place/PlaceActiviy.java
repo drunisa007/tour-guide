@@ -60,7 +60,7 @@ public class PlaceActiviy extends AppCompatActivity {
 
         }
         else if(data.equals("bur")){
-            getSupportActionBar().setTitle("လည္စရာေနရာမ်ား္");
+            getSupportActionBar().setTitle("လည္စရာေနရာမ်ား");
 
         }
         else{
@@ -85,11 +85,11 @@ public class PlaceActiviy extends AppCompatActivity {
         listTitle.add("Resorts");
         listTitle.add("Markets");
         List<String> listTitle_bur=new ArrayList<>();
-        listTitle_bur.add("စေတီတော်");
-        listTitle_bur.add("သမိုင်းဝင်");
-        listTitle_bur.add("ေက်ာ္ၾကာေသာ");
-        listTitle_bur.add("အပန်းဖြေ");
-        listTitle_bur.add("စျေးကွက်များ");
+        listTitle_bur.add("ေစတီေတာ္");
+        listTitle_bur.add("သမိုင္းဝင္");
+        listTitle_bur.add("ေက်ာ္ၾကားေသာ");
+        listTitle_bur.add("အပန္းေျဖ");
+        listTitle_bur.add("ေစ်းမ်ား");
         List<String> listTitle_chi=new ArrayList<>();
         listTitle_chi.add("宝塔");
         listTitle_chi.add("历史性");
