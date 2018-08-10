@@ -35,9 +35,9 @@ public class RestaurantActivity extends AppCompatActivity {
         }
         else if(data.equals("bur")){
             title="စားေသာက္ဆိုင္မ်ား";
-            foodOne="ရိုးရာအစားအသောက်";
-            foodTwo="အာရှအစားအစာ";
-            foodThree="ဥရောပအစားအစာ";
+            foodOne="႐ိုးရာအစားအေသာက္";
+            foodTwo="အာရွအစားအစာ";
+            foodThree="ဥေရာပအစားအစာ";
         }
         else{
             title="餐厅";

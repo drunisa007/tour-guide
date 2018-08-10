@@ -71,7 +71,7 @@ public class DialogAdapter extends RecyclerView.Adapter<DialogAdapter.MyViewHold
                        Intent intent = new Intent(view.getContext(),RestaurantSingleActivity.class);
                        intent.putExtra("data",data);
                        intent.putExtra("title",title);
-                       intent.putExtra("all",list.get(position).toLowerCase());
+                       intent.putExtra("all",list.get(position));
                        intent.putExtra("language",language);
                        view.getContext().startActivity(intent);
                        activity.finish();

@@ -62,8 +62,8 @@ public class FestivalActivity extends AppCompatActivity {
         }
         else if(data.equals("bur")){
             string1="ရိုးရာ";
-            string2="မော်ဒန်ပွဲတော်";
-            title="ပွဲတော်";
+            string2="ေမာ္ဒန္ပြဲေတာ္";
+            title="ပြဲေတာ္";
         }
         else{
             string1="传统民";

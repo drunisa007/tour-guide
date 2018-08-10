@@ -54,6 +54,7 @@ public class RestaurantSingleActivity extends AppCompatActivity {
 
         language = getIntent().getStringExtra("language");
 
+
         
         givingId();
 
