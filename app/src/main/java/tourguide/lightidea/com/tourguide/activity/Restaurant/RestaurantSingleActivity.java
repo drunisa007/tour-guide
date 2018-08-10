@@ -53,7 +53,7 @@ public class RestaurantSingleActivity extends AppCompatActivity {
         all = getIntent().getStringExtra("all");
 
         language = getIntent().getStringExtra("language");
-        Toast.makeText(this, language, Toast.LENGTH_SHORT).show();
+
 
         
         givingId();

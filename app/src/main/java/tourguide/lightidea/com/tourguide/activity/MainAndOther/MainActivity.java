@@ -310,11 +310,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         list.add("Sagaing");
         List<String> list_bur=new ArrayList<>();
         list_bur.add("မႏၲေလး");
-        list_bur.add("ရန်ကုန်");
-        list_bur.add("တောင်ကြီး");
-        list_bur.add("လားရှိုး");
-        list_bur.add("နေပြည်တော်");
-        list_bur.add("စစ်ကိုင်း");
+        list_bur.add("ရန္ကုန္");
+        list_bur.add("ေတာင္ႀကီး");
+        list_bur.add("လားရႈိး");
+        list_bur.add("ေနျပည္ေတာ္");
+        list_bur.add("စစ္ကိုင္း");
         List<String> list_chi=new ArrayList<>();
         list_chi.add("曼德勒");
         list_chi.add("仰光");
