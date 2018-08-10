@@ -63,18 +63,18 @@ public class ModernTwo extends Fragment {
                 if(language.equals("eng")){
                     holder.mTextViewTime.setText(model.getTime());
                     holder.mTextViewMonth.setText(model.getMonth());
-                    holder.mTextViewDate.setText(model.getDate());
+                    //holder.mTextViewDate.setText(String.valueOf(model.getDate()));
 
                 }
                 else if(language.equals("bur")){
                     holder.mTextViewTime.setText(model.getTime_bur());
                     holder.mTextViewMonth.setText(model.getMonth_bur());
-                    holder.mTextViewDate.setText(model.getDate_bur());
+                   // holder.mTextViewDate.setText(model.getDate_bur());
                 }
                 else {
                     holder.mTextViewTime.setText(model.getTime_chi());
                     holder.mTextViewMonth.setText(model.getMonth_chi());
-                    holder.mTextViewDate.setText(model.getDate_chi());
+                   //holder.mTextViewDate.setText(model.getDate_chi());
 
                 }
                 holder.mTextViewLocation.setText(model.getLocation());

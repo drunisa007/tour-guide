@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="200dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:text="Sample"
+        android:id="@+id/recyclerview_arun_single_layout_textview"
+        android:textAlignment="center"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:src="@drawable/guide"
+        android:id="@+id/recyclerview_arun_single_layout_imageview"
+        android:scaleType="centerCrop"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

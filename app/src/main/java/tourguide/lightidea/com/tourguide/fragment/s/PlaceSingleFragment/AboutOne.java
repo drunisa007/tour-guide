@@ -63,8 +63,6 @@ public class AboutOne extends Fragment {
             pos = Integer.parseInt(bundle.getString("pos"));
             language = bundle.getString("language");
         }
-        Toast.makeText(getActivity(), language+"", Toast.LENGTH_SHORT).show();
-        Log.d("arun",language+"lee");
         return view;
     }
 

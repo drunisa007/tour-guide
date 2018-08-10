@@ -103,7 +103,6 @@ public class HotelSingleActivity extends AppCompatActivity {
         location=getIntent().getStringExtra("location");
         price=getIntent().getStringExtra("price");
         id = getIntent().getStringExtra("id");
-        Toast.makeText(this, id+"", Toast.LENGTH_SHORT).show();
         //room=getIntent().getStringExtra("room");
         //reroom=getIntent().getStringExtra("reroom");
 

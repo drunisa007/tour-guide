@@ -206,10 +206,15 @@ public class RestaurantSingleActivity extends AppCompatActivity {
         }
         else if(data.equals("asianfood")){
             list.add("Chinese");
+            list.add("Thai");
+            list.add("Indian");
+            list.add("Korean");
+            list.add("Japanese");
 
         }
         else if(data.equals("europeanfood")){
-            list.add("UK");
+            list.add("European");
+            list.add("Uk");
         }
 
         List mList = new ArrayList();
