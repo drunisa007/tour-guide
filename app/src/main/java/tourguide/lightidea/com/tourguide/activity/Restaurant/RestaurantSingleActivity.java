@@ -53,7 +53,6 @@ public class RestaurantSingleActivity extends AppCompatActivity {
         all = getIntent().getStringExtra("all");
 
         language = getIntent().getStringExtra("language");
-        Toast.makeText(this, language, Toast.LENGTH_SHORT).show();
 
         
         givingId();
@@ -214,7 +213,8 @@ public class RestaurantSingleActivity extends AppCompatActivity {
         }
         else if(data.equals("europeanfood")){
             list.add("European");
-            list.add("Uk");
+            list.add("Italian");
+            list.add("French");
         }
 
         List mList = new ArrayList();

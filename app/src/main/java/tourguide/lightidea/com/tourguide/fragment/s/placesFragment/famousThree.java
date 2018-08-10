@@ -80,23 +80,23 @@ public class famousThree extends Fragment {
 
                 String name = model.getName();
 
-                if(language.equals("eng")){
-                    holder.mTextView.setText(model.getName());
-                    holder.mAbout.setText(model.getFamous());
-                    holder.famours_textView.setText("Why it is Famous ? ");
-                }
-                else if(language.equals("bur")){
-                    holder.mTextView.setText(model.getName_bur());
-                    name = model.getName_bur();
-                    holder.famours_textView.setText("Why it is Famous Bur? ");
-                    holder.mAbout.setText(model.getFamous_bur());
-                }
-                else {
-                    holder.mTextView.setText(model.getName_chi());
-                    name = model.getName_chi();
-                    holder.famours_textView.setText("Why it is Famous Chi? ");
-                    holder.mAbout.setText(model.getFamous_chi());
-                }
+//                if(language.equals("eng")){
+//                    holder.mTextView.setText(model.getName());
+//                    holder.mAbout.setText(model.getFamous());
+//                    holder.famours_textView.setText("Why it is Famous ? ");
+//                }
+//                else if(language.equals("bur")){
+//                    holder.mTextView.setText(model.getName_bur());
+//                    name = model.getName_bur();
+//                    holder.famours_textView.setText("Why it is Famous Bur? ");
+//                    holder.mAbout.setText(model.getFamous_bur());
+//                }
+//                else {
+//                    holder.mTextView.setText(model.getName_chi());
+//                    name = model.getName_chi();
+//                    holder.famours_textView.setText("Why it is Famous Chi? ");
+//                    holder.mAbout.setText(model.getFamous_chi());
+//                }
                 Glide.with(getActivity()).load(model.getUrl()).into(holder.mImageView);
                 final String finalName = name;
                 holder.mCardview.setOnClickListener(new View.OnClickListener() {
@@ -144,9 +144,9 @@ public class famousThree extends Fragment {
             super(itemView);
             mImageView = itemView.findViewById(R.id.famousthree_imageview);
             mTextView = itemView.findViewById(R.id.famousthree_textview);
-            mAbout = itemView.findViewById(R.id.famousthree_textview_why);
+           // mAbout = itemView.findViewById(R.id.famousthree_textview_why);
             mCardview = itemView.findViewById(R.id.famousthree_cardview);
-            famours_textView=itemView.findViewById(R.id.why_famous);
+//            famours_textView=itemView.findViewById(R.id.why_famous);
 
         }
     }
